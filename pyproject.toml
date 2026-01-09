@@ -4,4 +4,4 @@ version = "0.1.0"
 description = "time series tutorials"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pandas", "numpy", "statsmodels","matplotlib","seaborn"]
+dependencies = ["pandas", "numpy", "statsmodels","matplotlib","seaborn", "scikit-learm"]
