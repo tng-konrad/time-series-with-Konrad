@@ -5,4 +5,4 @@ description = "time series tutorials"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["pandas", "numpy", "statsmodels","matplotlib","seaborn", "scikit-learn", "pmdarima", 
-                "pandas_datareader", "graphviz", "lifelines", "jinja2", "lifetimes"]
+                "pandas_datareader", "graphviz", "lifelines", "jinja2", "lifetimes", "lightgbm"]
