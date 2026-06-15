@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "datasetsforecast>=1.0.0",
+    "hierarchicalforecast>=1.5.1",
     "ipykernel>=7.3.0",
     "matplotlib>=3.11.0",
     "matplotlib-inline>=0.2.2",
@@ -12,6 +14,8 @@ dependencies = [
     "pandas>=3.0.3",
     "pmdarima>=2.1.1",
     "scikit-learn>=1.9.0",
+    "statsforecast>=2.0.3",
     "statsmodels>=0.14.6",
+    "utilsforecast>=0.2.15",
     "yfinance>=1.4.1",
 ]
