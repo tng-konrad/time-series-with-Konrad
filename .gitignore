@@ -2,3 +2,5 @@ v1/
 ./data/sales_train_evaluation.csv.zip
 
 .DS_Store
+dumpsterx/claude-notebook-causal-methods-for-time-series.ipynb
+.gitignore
