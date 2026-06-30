@@ -20,5 +20,6 @@ dependencies = [
     "statsforecast>=2.0.3",
     "statsmodels>=0.14.6",
     "utilsforecast>=0.2.15",
+    "xgboost>=3.3.0",
     "yfinance>=1.4.1",
 ]
