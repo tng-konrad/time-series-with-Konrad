@@ -1,6 +1,4 @@
-# Recipe: Writing a Teaching Notebook in the m01–m05 Style
-
-A reconstruction of the methodology used in `m01-the-basics` through `m05-survival-analysis`, written so a new notebook on a different topic can be produced at the same level of technical detail, for the same audience.
+# Recipe: Writing a Teaching Notebook 
 
 ---
 
