@@ -7,6 +7,8 @@ SEP 14, 2026
 
 Every model in this series so far has shared one worldview: write down a small parametric story about how the series evolves — a smoothed level (episode 2), an ARMA polynomial (episode 3), a state space recursion (episode 10) — and estimate a handful of parameters, one series at a time. This episode switches paradigms. A **recurrent neural network (RNN)** makes almost no assumptions about the shape of the dynamics. Instead it maintains a **hidden state** — a vector of numbers acting as a running memory — and *learns* how to update that memory from the data itself. No stationarity tests, no order selection, no seasonal differencing.
 
+↪ *The parametric "small-story" models this episode breaks away from: exponential smoothing (episode 2 — **<LINK TO EPISODE 2 HERE>**), the ARMA/ARIMA family (episode 3 — **<LINK TO EPISODE 3 HERE>**), and the state space recursion (episode 10 — **<LINK TO EPISODE 10 HERE>**).*
+
 You might expect this to be the episode where the neural networks sweep the board. It isn't (spoiler: the final scoreboard is a photo finish, and the naive baseline is closer than anyone would like to admit). What the networks buy you is different, and more interesting than raw accuracy — but that freedom has a price, and the price is the real subject of this episode. Plain RNNs *forget*: the mathematics of backpropagation through time makes gradients decay or explode exponentially with sequence length, so a vanilla recurrent cell cannot learn dependencies more than a few dozen steps back. The whole modern zoo — GRU, LSTM, encoder–decoders, bidirectional wrappers — exists to route around that single mathematical fact.
 
 The core principle of the episode:
@@ -48,6 +50,8 @@ Two pipeline decisions before any model, and the *order* between them is the les
 *Pro tip: after the honest version, the scaled validation segment is not guaranteed to stay inside [0, 1] — if 1989 had brought a record heat wave, it would scale above 1. That slight untidiness is what no-leakage looks like. If your scaled test set fits suspiciously perfectly, ask why.*
 
 And because windows overlap, one more subtlety: a window is assigned to train or validation by *where its target falls*, not where it starts. The first validation window predicts 1 January 1989 from the last thirty days of December 1988 — inputs from the past are fair game, because by the time you forecast January 1989 for real, December 1988 is known history.
+
+↪ *Splitting before scaling and assigning windows by target date are the same leakage discipline episode 8 was entirely devoted to — now in neural-network clothing.* → **<LINK TO EPISODE 8 HERE>**
 
 Before a single neuron trains, we fix the goalposts with two naive baselines — tomorrow equals today (**persistence**), and tomorrow equals the same day last year (**seasonal naive**):
 
@@ -180,6 +184,8 @@ This chart does *not* show the cartoon version of the story, and it rewards a ca
 > **[FIGURE 6 — notebook cell 63]** One validation window's 14-day forecasts against reality: all three model paths sit in a calm band around 13 °C while the actual temperature takes a cold detour down to 8 °C.
 
 One concrete trajectory, to keep the aggregate honest — and window 100 is instructive precisely because the models *miss*. None of them foresees the cold snap, and none should be expected to: a cold snap five days out is weather, not climate, and a squared-error-minimizing forecast correctly declines to gamble on it. This is the conditional-mean effect stretched over a horizon — smooth, central, unbothered — and it is a preview of why the natural next step after point forecasts is *probabilistic* forecasting: the interesting object in that chart is not the line but the uncertainty band that should have surrounded it (episode 7 readers already know where this is going).
+
+↪ *Turning a point forecast into a calibrated uncertainty band is exactly what conformal prediction does — episode 7 is the natural next step after everything here.* → **<LINK TO EPISODE 7 HERE>**
 
 ## Covariates, and a bidirectional word of warning
 

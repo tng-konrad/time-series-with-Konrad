@@ -11,6 +11,8 @@ Dangerous, because time series are where correlation-versus-causation goes to ge
 
 And yet time also hands us something cross-sectional data never can: **a cause must precede its effect**. The arrow of time (episode 8 readers know it well) is not just a constraint on validation — it is an identification device. If the past of X helps predict Y beyond what Y's own past provides, X carries *some* kind of information about Y's future. An entire family of econometric methods has been built on that one axiom, and this episode climbs it as a ladder: **VAR → Granger causality → cointegration → VECM → Toda-Yamamoto → structural VAR**.
 
+↪ *That same arrow of time is why ordinary cross-validation quietly breaks on temporal data — episode 8 turned it into a full toolkit of leakage-proof validation, and it's the honest foundation for every forecast comparison below.* → **<LINK TO EPISODE 8 HERE>**
+
 One disclaimer before we start, and it applies to every rung: these methods detect **predictive precedence**, not manipulative causality. "X Granger-causes Y" means X's past improves forecasts of Y — a statement about information, not about what happens if you *intervene* on X. Granger himself, tired of the philosophical crossfire, preferred "temporally related". Keep that asterisk taped to your monitor for the next five thousand words.
 
 Our arena is real throughout: **fifty years of the US economy** — quarterly GDP, consumption, investment, money, prices, and interest rates, 1959–2009, straight from FRED (bundled with statsmodels, so the notebook runs offline). No simulations this time. Real data means real mess, and the mess, as you'll see, is where the lessons live. The goal, as always, is practical understanding over mathematical rigor.
@@ -35,6 +37,8 @@ Three things to register in this plot, because each one becomes a section later.
 
 Eyeballs are not a test, so we formalize with the two-test battery from episode 3, run through one helper: **ADF** (null: unit root) and **KPSS** (null: stationary). Opposite nulls is the point — when they agree, the verdict is solid; when they disagree, the series is telling you it lives near the boundary.
 
+↪ *New to ADF, KPSS, and the stationarity-testing ritual? The ARIMA episode built them from scratch — they're the prerequisite for every method in this one.* → **<LINK TO EPISODE 3 HERE>**
+
 > **[TABLE 1 — notebook cell 26]** Stationarity verdicts, levels vs growth rates side by side.
 
 ```
@@ -53,6 +57,8 @@ g_gdp(t) = c + φ·g_gdp(t−1) + ε(t)
 ```
 
 Fitted: `c ≈ 0.53`, `φ ≈ 0.30`. Growth has mild momentum — a strong quarter tends to be followed by an above-average one — dying out geometrically within a year. Fine. But this model believes GDP growth is explained *only by its own past*: consumption and investment, two-thirds and a sixth of GDP respectively, are not consulted at all.
+
+↪ *The AR(1) recurrence — this quarter leaning on the last — is the same momentum idea we first met among the smoothers and autoregressive models earlier in the series.* → **<LINK TO EPISODE 2 HERE>**
 
 The **VAR(p)** — vector autoregression — fixes exactly this, by brute-force generosity. Replace the scalar with a vector: each of the *k* variables is regressed on *p* lags of **all k variables**, its own past and everyone else's:
 

@@ -9,6 +9,8 @@ Every episode in this series has ended the same way: fit a model, hold out some 
 
 For ordinary tabular problems, holding out data is routine: shuffle, slice off a random 25%, or run K-Fold, and read off the score. Those recipes rest on the assumption that your rows are independent draws from one static distribution — exchangeable tiles pulled from a bag (episode 7 readers have met this bag before). Time series are the opposite of a bag. The order *is* the information: yesterday tells you about today, trends carry over, and the world at time `t` was built from everything before it and nothing after. Physics calls this the **arrow of time**; econometrics translates it into one non-negotiable rule — *cause precedes effect, so a forecast made at time `t` may only use information available at or before `t`.*
 
+↪ *That "bag" of interchangeable draws is the i.i.d. assumption conformal prediction leaned on in episode 7 to build honest prediction intervals — this episode is what happens when the bag turns out to be a lie.* → **<LINK TO EPISODE 7 HERE>**
+
 Violate that rule during validation — even indirectly, through a shuffled row, an overlapping label, or a rolling feature computed across a split boundary — and you are no longer measuring forecasting skill. You are measuring your model's ability to **predict the past**. It will look magnificent at it. The failure mode has a name, **data leakage**, and a signature: a beautiful validation score, followed by a collapse in production, followed by a meeting you don't want to attend.
 
 **A validation score is a claim about the future made from inside the past — and every shortcut in the splitting scheme is a loan taken out against deployment.**
@@ -24,11 +26,15 @@ To compare validation methods we need one luxury that practitioners never have a
 
 The dataset is the classic **store-item demand** set from Kaggle: five years (2013–2017) of genuine daily unit sales for 50 items in one retail store — the same flavor of retail panel as the M5 data from episode 6, just small enough to run a few dozen model fits without leaving your desk. About 91,000 rows: one row per (date, item).
 
+↪ *This panel is a bite-sized cousin of the M5 retail-demand data we forecasted end-to-end in episode 6 — start there for the full sales-forecasting workflow this one stress-tests.* → **<LINK TO EPISODE 6 HERE>**
+
 The *structure* matters as much as the content. This is **panel data**: at every timestamp we observe many entities at once — exactly like the Ubiquant market-prediction dataset (one `time_id`, many `investment_id`s) that motivates much of the financial validation literature. Items in the same store share a common environment: the same promotions, the same weather, the same seasonal shopping rhythm. Their sales on any given day are *contemporaneously correlated*. Hold that thought; it will break something later.
 
 > **[FIGURE 1 — notebook cell 20]** Two stacked panels. Top: total daily sales across all 50 items, 2013–2017, with a dashed green line marking the hold-out boundary near the end of 2017. Bottom: three individual items (1, 15, 28) plotted over the same span.
 
 Three features jump out of the top panel, each with a consequence for validation. First, an **upward trend** — 2017 runs visibly higher than 2013. The mean changes over time, which is the textbook definition of **non-stationarity** (episode 3 veterans will remember the Dickey–Fuller ritual). A model trained on early years faces a future sitting at levels it has never seen — so "how hard is the future?" genuinely depends on *which* future, something a scheme that scrambles time can never respect. Second, a **strong yearly cycle**: summer peaks, winter troughs, meaning performance depends on *where in the calendar* a validation block happens to fall — a first hint of why a single train/test path can mislead. Third, the fine weekly sawtooth. And in the bottom panel: three items at different levels, all dancing to the same rhythm. That's the contemporaneous correlation, visible to the naked eye.
+
+↪ *The machinery behind "non-stationarity" — ADF, KPSS, differencing, the whole Dickey–Fuller ritual — got its thorough treatment in the ARIMA episode, and it's the prerequisite for seeing why this data leaks.* → **<LINK TO EPISODE 3 HERE>**
 
 > **[FIGURE 2 — notebook cell 22]** Bar plot of the autocorrelation of total daily sales at lags 0 through 30. High across the board, with pronounced ripples at lags 7, 14, 21, 28.
 

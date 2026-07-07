@@ -7,6 +7,8 @@ OCT 12, 2026
 
 Every model in this series so far — from exponential smoothing (episode 2) to last episode's LSTMs — has shared a quiet assumption: the series you want to forecast comes with *enough history to learn from*. Real deployments violate it constantly. A newly opened store. A freshly installed sensor. A product launched last quarter. You have four months of data and a stakeholder who wants a weekly forecast anyway.
 
+↪ *That quiet "enough history to learn from" assumption goes all the way back to the classical smoothers of episode 2 — this episode is what to do when it fails.* → **<LINK TO EPISODE 2 HERE>**
+
 The classical answer is to shrug and fit something tiny. The deep learning answer — the subject of this episode — is **transfer learning**: pretrain a network on a *source* domain where data is plentiful, then hand the learned weights to your data-starved *target* as a starting point. The network arrives already knowing what demand curves look like; the scarce local data only has to teach it what makes *this one* different. Last episode ended by noting that deep learning earns its complexity budget through *global training* — one model across many related series. This episode is that idea, weaponized.
 
 The core principle:
@@ -28,6 +30,8 @@ Look at the two panels and you can see why this is a *friendly* transfer setting
 
 That observation drives the single most load-bearing preprocessing decision of the episode: **per-series standardization**. Each series is z-scored by its own mean and standard deviation, so the network only ever sees "standard deviations around my own typical level". This is what makes weights portable at all — a network trained on raw store-1 quantities would be lost on a target with a different baseline, but a network trained on shapes can read any series that has been translated into shape language. (The scaling statistics come from training data only, and for the target that means the scarce 120 days — the usual leakage discipline from episode 8, doing double duty.)
 
+↪ *Why the scaler may only ever see training data is the crux of episode 8 on validation and leakage — the discipline that keeps every number in this post honest.* → **<LINK TO EPISODE 8 HERE>**
+
 > **[FIGURE 2 — notebook cell 26: the target series with the ignored history in grey, the 120 available days highlighted, the 84-day test period in green]**
 
 The split is chronological, as always: the final 84 days are the test period — twelve non-overlapping one-week forecasts, walk-forward style, where the model receives the actual observed previous 28 days at each origin (the way it would in production) but is never retrained. One detail worth savoring in that plot: the test window covers the year-end demand slide. A model trained only on the 120 summer-and-autumn days *has never seen this part of the annual cycle*. That is not an unfair test; it is the realistic one. Whether a forecaster can anticipate a season it never observed locally is exactly where borrowed knowledge should earn its keep.
@@ -44,6 +48,8 @@ Persistence (next week = flat line at today's value) is poor — it can't follow
 ## Rung 1: from scratch, and a dose of humility
 
 The architecture for the whole episode is deliberately modest: a single GRU layer (64 units — see episode 11 for what the gates are doing) reads the 28-day window, and a `Dense(7)` head maps the final hidden state to a week of forecasts. Two named parts — **encoder** and **head** — and that split is *the* central abstraction of transfer learning: the encoder learns a general-purpose representation of "what the last four weeks looked like", the head is a task-specific readout. Transferring a model means keeping the first and re-training (or replacing) the second.
+
+↪ *If "GRU", "encoder" and "hidden state" need unpacking, episode 11 built these recurrent networks from the ground up — the gates especially.* → **<LINK TO EPISODE 11 HERE>**
 
 First, the no-transfer reference point: random initialization, 120 days of history, hope. The windowing arithmetic is brutal — 120 days yield 86 windows, split chronologically into 69 for training and 17 for validation. Against that stand 13,319 parameters. This is the textbook overfitting configuration, and early stopping is the only thing standing between the network and pure memorization.
 

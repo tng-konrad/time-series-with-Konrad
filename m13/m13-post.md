@@ -22,9 +22,13 @@ https://github.com/tng-konrad/time-series-with-Konrad/blob/main/m13-fable-versio
 
 The dataset is an old friend: the Kaggle store-item demand data from episode 12 — five years (2013–2017) of daily unit sales, 50 items, 10 stores. Last episode we treated its series one at a time. This time the *panel structure itself* is the point: we take store 1 and pivot it into a single matrix with one row per day and one column per item — a 1,826 × 50 array where each column is what this episode calls a **channel**. The task: given twelve weeks of all fifty channels, predict the next two weeks of all fifty channels, simultaneously, in one network call.
 
+↪ *Same store-item dataset, different angle: episode 12 used it for transfer learning, forecasting a brand-new store from borrowed weights.* → **<LINK TO EPISODE 12 HERE>**
+
 > **[FIGURE 1 — notebook cell 24: three stacked line plots, items 1 / 15 / 28 daily sales over 2013–2017]**
 
 Three items are enough to see everything that matters. First, the **shared shape**: every panel shows the same summer-peaked annual cycle, the same gentle multi-year growth, the same weekly rhythm. Second, the **different scales** — items differ several-fold in volume, which is why each channel gets z-scored by its own training-era mean and standard deviation (fitted on training data only; the leakage liturgy from episode 8 applies as always). Third, the noise: item-level demand is noisy in a way store-level aggregates are not, and no model below will be forgiven for pretending otherwise.
+
+↪ *"Fitted on training data only" is the entire moral of episode 8 — the validation discipline that decides whether any RMSE in this post can be trusted.* → **<LINK TO EPISODE 8 HERE>**
 
 The shared shape deserves a number:
 
@@ -46,6 +50,8 @@ Copy-last-week versus copy-last-year, and the *year* wins — 364 rather than 36
 The recurrent recipe from episode 11, scaled up: a GRU reads the 84 days step by step — each step now seeing a 50-dimensional vector — and its final 64-number hidden state feeds a linear head that emits all 14 × 50 = 700 outputs at once. Direct multi-step forecasting; no recursive feedback loop, no error accumulation (we measured that pathology two episodes ago).
 
 Pause on what this architecture *asks* of the hidden state: 64 numbers must summarize everything relevant about 4,200 input values, and the summary is built strictly left to right. By the time the encoder reaches yesterday, week one survives only as whatever trace the gates chose to keep. That compression bottleneck — and the sequential walk that builds it — is precisely what attention was invented to dismantle.
+
+↪ *The GRU and LSTM this section promotes to a multivariate task were built and dissected in episode 11 — start there if the gates and hidden states are unfamiliar.* → **<LINK TO EPISODE 11 HERE>**
 
 ```
 GRU:   {'MAE': 7.022, 'RMSE': 9.349}    67,772 params, ~20s to train

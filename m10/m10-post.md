@@ -7,6 +7,8 @@ AUG 17, 2026
 
 For most of this series, "which model?" has meant choosing between families. Episode 2 gave you the exponential smoothers; episode 3 the ARIMA clan; episode 1 the structural decompositions. Historically that split was real — the Box–Jenkins people and the exponential-smoothing people went to different conferences, published in different journals, and regarded each other's methods with polite suspicion. One camp had rigorous statistics and black-box interpretability; the other had intuitive components and no probability model to stand on.
 
+↪ *New to the families this episode unifies? Exponential smoothing was episode 2 (**<LINK TO EPISODE 2 HERE>**), the ARIMA clan episode 3 (**<LINK TO EPISODE 3 HERE>**), and structural trend/seasonal decomposition episode 1 (**<LINK TO EPISODE 1 HERE>**).*
+
 **State space models (SSMs)** are the framework that quietly ended the feud. In the formulation perfected by Durbin and Koopman, ARIMA, exponential smoothing, and structural trend/seasonal models turn out to be *special cases* of one architecture — different fillings of the same two equations. This is not a philosophical nicety: once everything lives in one framework, everything gets a real likelihood, comparable AICs, proper prediction intervals, and — my favorite — native handling of missing data. No other idea in classical time series buys so much with so little.
 
 The central move is a separation of concerns worth stating as this episode's core principle:
@@ -117,6 +119,8 @@ Their ratio — the **signal-to-noise ratio** q = σ²_η/σ²_ε ≈ 0.10 — i
 This plot teaches the most important conceptual distinction in state space practice: **filtering versus smoothing**. The *filtered* estimate at year t uses only data up to t — what you could have known in real time. The *smoothed* estimate runs a second, backward recursion and uses the entire sample — later observations revise earlier state estimates. The difference is starkest exactly where it matters, at the break: the filter needs several post-dam years of low readings before it believes the regime changed (in real time, two low years might just be noise), while the smoother, knowing the future, pins the drop where it happened.
 
 The practical rule falls straight out, and it has a familiar episode-8 flavor: **forecasting and real-time monitoring live in filtered world; historical analysis lives in smoothed world.** Admiring how well the *smoothed* level "would have detected" the break in real time is a hindsight error — the smoother has seen the future.
+
+↪ *"Never let the model see the future" is the exact discipline episode 8 built its whole validation framework on — the smoother-as-hindsight trap is data leakage wearing a different costume.* → **<LINK TO EPISODE 8 HERE>**
 
 ### Rung 2: local linear trend — add a slope
 
