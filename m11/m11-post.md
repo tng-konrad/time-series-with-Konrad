@@ -38,7 +38,7 @@ But a neural network doesn't consume a time series — it consumes (input, targe
 
 How many windows, how long each window is, how many variables are measured per step. Univariate forecasting means `features = 1`; the multivariate finale will just make that number bigger. **Forecasting has become supervised learning**, and everything we know about training and validating supervised models applies — including the ways it can go quietly wrong.
 
-> **[FIGURE 1 — notebook cell 18]** Daily minimum temperature in Melbourne, 1981–1990. A strong, obvious annual cycle (Southern Hemisphere summers peaking around New Year), no trend, and a thick band of day-to-day weather noise around the seasonal signal.
+> **[FIGURE 1 — graphs/graph11-01.png — notebook cell 18]** Daily minimum temperature in Melbourne, 1981–1990. A strong, obvious annual cycle (Southern Hemisphere summers peaking around New Year), no trend, and a thick band of day-to-day weather noise around the seasonal signal.
 
 The seasonal part is easy; the noise band is irreducible; the interesting question is how much of the in-between structure — cold snaps, warm spells, multi-day persistence — each architecture can capture.
 
@@ -76,7 +76,7 @@ Powers of a number: collapse to zero for |w| < 1, blow up for |w| > 1. The multi
 
 The experiment: draw a random 32×32 matrix (the size of our future hidden layers), rescale its spectral radius to exactly 0.9, 1.0, or 1.1, multiply it by itself sixty times, and record the norm.
 
-> **[FIGURE 2 — notebook cell 29]** Gradient magnitude vs. distance backpropagated, log scale. Three straight-ish lines: ρ = 0.9 decays steadily to a couple of percent of its starting value by step 60; ρ = 1.1 amplifies by a factor of hundreds; ρ = 1.0 holds roughly level.
+> **[FIGURE 2 — graphs/graph11-02.png — notebook cell 29]** Gradient magnitude vs. distance backpropagated, log scale. Three straight-ish lines: ρ = 0.9 decays steadily to a couple of percent of its starting value by step 60; ρ = 1.1 amplifies by a factor of hundreds; ρ = 1.0 holds roughly level.
 
 The picture is the whole vanishing-gradient literature in one chart. At ρ = 0.9 — a matrix only *slightly* contractive — whatever happened sixty days ago contributes a couple of percent of its original signal to the weight update; push the horizon to a few hundred steps and it is effectively zero. At ρ = 1.1 the same sixty steps head toward numerical overflow. And ρ = 1.0 is exactly what it looks like: a knife-edge that nothing in gradient descent keeps a weight matrix balanced on.
 
@@ -88,7 +88,7 @@ The simplest recurrent forecaster: one `SimpleRNN` layer implementing exactly th
 
 The guardrail is **early stopping**: watch the validation loss after every epoch, and when it stops improving for five epochs running, halt and *rewind to the best weights*. It plays the role AIC played for ARIMA — the brake on fitting the noise. (The gotcha flag is `restore_best_weights=True`; without it you keep the weights from five epochs *past* the peak, already sliding downhill.)
 
-> **[FIGURE 3 — notebook cell 36]** SimpleRNN training history: training and validation loss per epoch. A steep drop in the first two epochs as the network learns the seasonal shape, then a long shallow tail until early stopping calls it around the halfway mark.
+> **[FIGURE 3 — graphs/graph11-03.png — notebook cell 36]** SimpleRNN training history: training and validation loss per epoch. A steep drop in the first two epochs as the network learns the seasonal shape, then a long shallow tail until early stopping calls it around the halfway mark.
 
 One quirk in that chart worth demystifying: the validation loss sits *below* the training loss, which looks backwards. Two boring reasons suffice — the training loss is averaged over the whole epoch (including its clumsy early batches) while validation is measured once, with the improved end-of-epoch weights; and these two particular validation years simply contain slightly tamer weather than the eight training ones. Neither is a red flag. A validation loss creeping *upwards* would be.
 
@@ -100,7 +100,7 @@ The score, after un-scaling back to degrees Celsius (skip that inverse transform
 
 Beats persistence (2.48). The thirty-day window lets the network average out weather noise and lean on the seasonal position — something a one-day-memory forecast structurally cannot do.
 
-> **[FIGURE 4 — notebook cell 40]** SimpleRNN one-step-ahead forecast vs. actuals, first 200 validation days. The prediction tracks the seasonal descent into winter and the multi-day swings, but visibly smooths the series — the sharpest one-day spikes are undershot.
+> **[FIGURE 4 — graphs/graph11-04.png — notebook cell 40]** SimpleRNN one-step-ahead forecast vs. actuals, first 200 validation days. The prediction tracks the seasonal descent into winter and the multi-day swings, but visibly smooths the series — the sharpest one-day spikes are undershot.
 
 That smoothing is not a flaw to fix. It is what minimizing squared error looks like when part of the variation is genuinely unpredictable: the model forecasts the conditional mean and lets the irreducible noise go. Hold that thought — it returns with a vengeance in the multi-step section.
 
@@ -171,7 +171,7 @@ Seq2seq LSTM     {'MAE': 2.148, 'RMSE': 2.771}
 
 Wait. The *recursive* strategy — the one we set up as the error-compounding villain — wins? Averages over a horizon hide exactly the thing this section is about, so let's split the error by lead time.
 
-> **[FIGURE 5 — notebook cell 61]** RMSE by days-ahead for the three strategies, with 1-step persistence as a dotted reference line. The recursive curve starts far below the others (2.23 °C at day 1 vs. ~2.6 for direct and seq2seq), climbs steeply for two days, joins the pack by day 3; from there all three drift together up to about 2.9 °C by day 14.
+> **[FIGURE 5 — graphs/graph11-05.png — notebook cell 61]** RMSE by days-ahead for the three strategies, with 1-step persistence as a dotted reference line. The recursive curve starts far below the others (2.23 °C at day 1 vs. ~2.6 for direct and seq2seq), climbs steeply for two days, joins the pack by day 3; from there all three drift together up to about 2.9 °C by day 14.
 
 This chart does *not* show the cartoon version of the story, and it rewards a careful read. Three observations, in order of how much they should surprise you:
 
@@ -181,7 +181,7 @@ This chart does *not* show the cartoon version of the story, and it rewards a ca
 
 **Third, the ceiling.** By day 5, every strategy's error exceeds what naive persistence achieves at day 1, and the curves flatten near 2.9 °C — essentially the error of forecasting the seasonal climate and accepting the weather. Two weeks out, *what day it is* carries more information than anything in the last thirty days of observations. No architecture in this notebook can beat that; it is the irreducible noise floor of the problem, and **recognizing such a floor is as much a forecasting skill as lowering it**.
 
-> **[FIGURE 6 — notebook cell 63]** One validation window's 14-day forecasts against reality: all three model paths sit in a calm band around 13 °C while the actual temperature takes a cold detour down to 8 °C.
+> **[FIGURE 6 — graphs/graph11-06.png — notebook cell 63]** One validation window's 14-day forecasts against reality: all three model paths sit in a calm band around 13 °C while the actual temperature takes a cold detour down to 8 °C.
 
 One concrete trajectory, to keep the aggregate honest — and window 100 is instructive precisely because the models *miss*. None of them foresees the cold snap, and none should be expected to: a cold snap five days out is weather, not climate, and a squared-error-minimizing forecast correctly declines to gamble on it. This is the conditional-mean effect stretched over a horizon — smooth, central, unbothered — and it is a preview of why the natural next step after point forecasts is *probabilistic* forecasting: the interesting object in that chart is not the line but the uncertainty band that should have surrounded it (episode 7 readers already know where this is going).
 

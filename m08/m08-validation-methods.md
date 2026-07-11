@@ -30,13 +30,13 @@ The dataset is the classic **store-item demand** set from Kaggle: five years (20
 
 The *structure* matters as much as the content. This is **panel data**: at every timestamp we observe many entities at once — exactly like the Ubiquant market-prediction dataset (one `time_id`, many `investment_id`s) that motivates much of the financial validation literature. Items in the same store share a common environment: the same promotions, the same weather, the same seasonal shopping rhythm. Their sales on any given day are *contemporaneously correlated*. Hold that thought; it will break something later.
 
-> **[FIGURE 1 — notebook cell 20]** Two stacked panels. Top: total daily sales across all 50 items, 2013–2017, with a dashed green line marking the hold-out boundary near the end of 2017. Bottom: three individual items (1, 15, 28) plotted over the same span.
+> **[FIGURE 1 — graphs/graph08-01.png — notebook cell 20]** Two stacked panels. Top: total daily sales across all 50 items, 2013–2017, with a dashed green line marking the hold-out boundary near the end of 2017. Bottom: three individual items (1, 15, 28) plotted over the same span.
 
 Three features jump out of the top panel, each with a consequence for validation. First, an **upward trend** — 2017 runs visibly higher than 2013. The mean changes over time, which is the textbook definition of **non-stationarity** (episode 3 veterans will remember the Dickey–Fuller ritual). A model trained on early years faces a future sitting at levels it has never seen — so "how hard is the future?" genuinely depends on *which* future, something a scheme that scrambles time can never respect. Second, a **strong yearly cycle**: summer peaks, winter troughs, meaning performance depends on *where in the calendar* a validation block happens to fall — a first hint of why a single train/test path can mislead. Third, the fine weekly sawtooth. And in the bottom panel: three items at different levels, all dancing to the same rhythm. That's the contemporaneous correlation, visible to the naked eye.
 
 ↪ *The machinery behind "non-stationarity" — ADF, KPSS, differencing, the whole Dickey–Fuller ritual — got its thorough treatment in the ARIMA episode, and it's the prerequisite for seeing why this data leaks.* → **<LINK TO EPISODE 3 HERE>**
 
-> **[FIGURE 2 — notebook cell 22]** Bar plot of the autocorrelation of total daily sales at lags 0 through 30. High across the board, with pronounced ripples at lags 7, 14, 21, 28.
+> **[FIGURE 2 — graphs/graph08-02.png — notebook cell 22]** Bar plot of the autocorrelation of total daily sales at lags 0 through 30. High across the board, with pronounced ripples at lags 7, 14, 21, 28.
 
 The autocorrelation function says the rest (reminder: episode 1). Correlations stay high across all 30 lags — knowing today's sales tells you a lot about next week and even next month — so adjacent observations are **highly redundant**. This is exactly the property that breaks the i.i.d. assumption underlying shuffled splits: put today in training and tomorrow in validation, and you've handed the model most of the answer. The ripples at multiples of 7 confirm the weekly cycle. Strongly serially correlated *and* non-stationary: this is the profile of data on which naive validation fails hardest.
 
@@ -79,7 +79,7 @@ Optimism                    : -2.1704
 
 The random split claims an error of 3.3 when the truth is 5.4 — it underestimates by roughly **40%**. If this were a real project, you would ship this model believing it nearly twice as accurate as it is. :-/
 
-> **[FIGURE 3 — notebook cell 34]** Zoomed timeline strip of the first ten days (500 rows, white lines separating consecutive days): blue training ticks and orange validation ticks interleaved *inside every single day*. The pattern repeats across all five years.
+> **[FIGURE 3 — graphs/graph08-03.png — notebook cell 34]** Zoomed timeline strip of the first ten days (500 rows, white lines separating consecutive days): blue training ticks and orange validation ticks interleaved *inside every single day*. The pattern repeats across all five years.
 
 Where does the fantasy come from? Two leaks, both flagged in the groundwork, both now cashed in. First, **serial correlation**: for almost every validation row, rows from the same item just days away sit in the training set — and with lag and rolling-mean features, those neighbors are nearly duplicate questions with known answers. Second, and worse, the **overlapping labels**: train on Monday's row and you have effectively seen ~86% of Tuesday's label. The model doesn't need to forecast anything; pattern-matching its own training set is enough.
 
@@ -96,7 +96,7 @@ Optimism                              : -2.1956
 
 The same fantasy number, now delivered with five-fold confidence — a badly biased estimate with a reassuringly small standard error. The tight agreement between folds is not robustness; it's five folds sharing one leak.
 
-> **[FIGURE 4 — notebook cell 39]** Fold-anatomy heatmap, one row per fold, one column per day. Blue = day used purely for training, orange = purely validation, violet = *the day itself is split between the two*. All five rows are wall-to-wall violet.
+> **[FIGURE 4 — graphs/graph08-04.png — notebook cell 39]** Fold-anatomy heatmap, one row per fold, one column per day. Blue = day used purely for training, orange = purely validation, violet = *the day itself is split between the two*. All five rows are wall-to-wall violet.
 
 Not one of the ~1,700 days, in any fold, sits cleanly on one side of the boundary: a shuffled draw takes about ten of each day's fifty rows for validation and trains on the other forty. There is no arrangement of time here at all — only a uniform mist of contamination. Keep this picture in mind; the rest of the post is, visually, the process of separating that violet into clean blue and clean orange.
 
@@ -115,7 +115,7 @@ Optimism                                        : +0.2480
 
 Night and day. The estimate jumps from the shuffled fantasy of 3.3 to 5.7 — within a few percent of the truth, and on the *conservative* side rather than the optimistic one. **No other single change in this post buys as much honesty as simply refusing to train on the future.** The residual conservatism has honest causes: early folds train on only a fraction of the history, and on trending data every fold genuinely faces the deployment problem of predicting a level slightly above anything it has seen. That difficulty is real — the sealed future poses it too.
 
-> **[FIGURE 5 — notebook cell 45]** The same fold-anatomy heatmap, now a clean staircase: in every fold a solid blue training block sits entirely to the left of a solid orange validation block, with the unused future in grey to the right. Each successive training block is longer than the last.
+> **[FIGURE 5 — graphs/graph08-05.png — notebook cell 45]** The same fold-anatomy heatmap, now a clean staircase: in every fold a solid blue training block sits entirely to the left of a solid orange validation block, with the unused future in grey to the right. Each successive training block is longer than the last.
 
 The staircase is the expanding-window variant: each fold trains on *all* history accumulated so far. `TimeSeriesSplit` offers a second flavor via `max_train_size` — a **sliding window** that keeps only the most recent observations and drops the oldest as it rolls forward. The choice between them is not a technicality; it is an implicit hypothesis about your data:
 
@@ -159,7 +159,7 @@ Optimism                                 : +0.0837
 
 The closest single-number claim of any method in this post — under a tenth of an RMSE unit from the truth.
 
-> **[FIGURE 6 — notebook cell 56]** The fold-anatomy heatmap again: visually the same staircase as Figure 5, but every blue/orange boundary is now a clean one-pixel transition — no violet column of a split day at any edge.
+> **[FIGURE 6 — graphs/graph08-06.png — notebook cell 56]** The fold-anatomy heatmap again: visually the same staircase as Figure 5, but every blue/orange boundary is now a clean one-pixel transition — no violet column of a split day at any edge.
 
 The picture is almost identical to the previous one, *which is the point*: the fix is microscopic in the image and decisive in principle. For panel data, the report's framing is exact and worth engraving somewhere visible: **group-aware splitting is not an upgrade, it is the entry requirement.**
 
@@ -189,7 +189,7 @@ Per-fold RMSE, unpurged: [5.79, 4.51, 4.39, 6.24,  6.71]
 Per-fold RMSE, purged  : [5.78, 4.78, 4.60, 5.95, 10.03]
 ```
 
-> **[FIGURE 7 — notebook cell 63]** The staircase heatmap once more, now with a thin grey seam — seven days wide against a 1,700-day axis, so look closely — between the end of each blue training block and the start of each orange validation block.
+> **[FIGURE 7 — graphs/graph08-07.png — notebook cell 63]** The staircase heatmap once more, now with a thin grey seam — seven days wide against a 1,700-day axis, so look closely — between the end of each blue training block and the start of each orange validation block.
 
 Two lessons here, one honest and one cautionary — and the honest one first, because this is the section where a less scrupulous post would oversell. On *this* dataset, purging changes the verdict only modestly, and the leaked rows it removes (7 days × 50 items per fold, out of tens of thousands) were too few to have inflated the unpurged scores much. The comprehensive report behind this episode says the same: versus plain group splitting, the improvement is often marginal. But the contamination fraction scales with `horizon / block_length`. Give your labels a 30-day footprint and your validation blocks a few weeks — routine numbers in finance — and the leaked share of training data stops being a rounding error. Purging is cheap insurance whose payout grows with exactly the problems you can't see coming.
 
@@ -215,7 +215,7 @@ The bookkeeping bonus is that the test blocks chain together into complete backt
 
 With `N = 6` and `k = 2`: `C(6,2) = 15` folds to fit (a threefold increase in compute over our 5-fold walks — CPCV's reputation for expense is earned), stitching into `φ = 5` complete alternate backtests. Every previous method gave us exactly one.
 
-> **[FIGURE 8 — notebook cell 72]** The fold-anatomy heatmap for all 15 CPCV folds. Orange test blocks appear at every position along the timeline, not just the trailing edge; many folds train on blue blocks sitting *after* their test blocks; and each orange block is flanked by grey seams — the narrow 7-day purge on its left, the wider 28-day embargo on its right.
+> **[FIGURE 8 — graphs/graph08-08.png — notebook cell 72]** The fold-anatomy heatmap for all 15 CPCV folds. Orange test blocks appear at every position along the timeline, not just the trailing edge; many folds train on blue blocks sitting *after* their test blocks; and each orange block is flanked by grey seams — the narrow 7-day purge on its left, the wider 28-day embargo on its right.
 
 This picture is the whole method in one glance: test sets everywhere, training on both sides, and every boundary defended in the direction its footprint points. Running all 15 folds:
 
@@ -226,7 +226,7 @@ CPCV mean RMSE      : 4.9889  | std: 1.6007
 True generalisation : 5.4454
 ```
 
-> **[FIGURE 9 — notebook cell 74]** Histogram of the 15 CPCV fold scores: a main mass around 4, a heavy right tail reaching past 8. A solid orange line marks the CPCV mean (4.99); a dashed green line marks the true error (5.45), sitting comfortably inside the distribution.
+> **[FIGURE 9 — graphs/graph08-09.png — notebook cell 74]** Histogram of the 15 CPCV fold scores: a main mass around 4, a heavy right tail reaching past 8. A solid orange line marks the CPCV mean (4.99); a dashed green line marks the true error (5.45), sitting comfortably inside the distribution.
 
 This histogram is the payoff of the entire episode. Where every earlier method handed us a single bar — one number, take it or leave it — CPCV hands us a *shape*, and the shape is legible. The low scores come from folds whose test blocks sit in the interior of the timeline with training data on both sides: those folds **interpolate**, and interpolating a trending series is genuinely easier than extrapolating it. The upper tail belongs to the folds whose test sets include the final, highest-level block with no later data to lean on — the folds that most resemble actual deployment. That's also why the CPCV *mean* lands a shade optimistic: honesty compels the observation that averaging in easy alternate histories flatters the number. A practitioner reads the distribution accordingly — the upper tail as the deployment stress case, and the standard deviation as a direct measurement of **regime sensitivity**, the very quantity every single-path method silently averaged away.
 
@@ -248,7 +248,7 @@ One dataset, seven claims, one sealed future. The full scoreboard:
 | PurgedGroupTimeSeriesSplit | 6.2276 | 5.4454 | +0.7822 |
 | CPCV (mean of 15 folds) | 4.9889 | 5.4454 | −0.4565 |
 
-> **[FIGURE 10 — notebook cell 79]** Bar chart of the optimism column: two deep red bars for the shuffled methods, green bars near zero for the honest ones (expanding TimeSeriesSplit, GroupTimeSeriesSplit, CPCV), orange bars on the conservative side for the sliding window and the purged split.
+> **[FIGURE 10 — graphs/graph08-10.png — notebook cell 79]** Bar chart of the optimism column: two deep red bars for the shuffled methods, green bars near zero for the honest ones (expanding TimeSeriesSplit, GroupTimeSeriesSplit, CPCV), orange bars on the conservative side for the sliding window and the purged split.
 
 Read the optimism column top to bottom and the whole argument is laid bare. The two shuffled methods under-report the true error by ~2.2 units — 40% — purchased entirely with leaked future information. The moment chronology is enforced, optimism collapses to a fraction of a unit. The group split turns in the single most accurate point claim; purging trades a little point accuracy for a guarantee about contamination, landing conservative — and when a validation method errs, conservative is the side you want to err on; the sliding window is honest but handicapped by its short memory on this stable process; and CPCV's mean sits slightly below truth for the structural reason above, while its distribution — invisible in a one-number column — is where its actual value lives.
 

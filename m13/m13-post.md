@@ -24,7 +24,7 @@ The dataset is an old friend: the Kaggle store-item demand data from episode 12 
 
 ↪ *Same store-item dataset, different angle: episode 12 used it for transfer learning, forecasting a brand-new store from borrowed weights.* → **<LINK TO EPISODE 12 HERE>**
 
-> **[FIGURE 1 — notebook cell 24: three stacked line plots, items 1 / 15 / 28 daily sales over 2013–2017]**
+> **[FIGURE 1 — graphs/graph13-01.png — notebook cell 24: three stacked line plots, items 1 / 15 / 28 daily sales over 2013–2017]**
 
 Three items are enough to see everything that matters. First, the **shared shape**: every panel shows the same summer-peaked annual cycle, the same gentle multi-year growth, the same weekly rhythm. Second, the **different scales** — items differ several-fold in volume, which is why each channel gets z-scored by its own training-era mean and standard deviation (fitted on training data only; the leakage liturgy from episode 8 applies as always). Third, the noise: item-level demand is noisy in a way store-level aggregates are not, and no model below will be forgiven for pretending otherwise.
 
@@ -32,7 +32,7 @@ Three items are enough to see everything that matters. First, the **shared shape
 
 The shared shape deserves a number:
 
-> **[FIGURE 2 — notebook cell 26: 50×50 correlation heatmap of the item series]**
+> **[FIGURE 2 — graphs/graph13-02.png — notebook cell 26: 50×50 correlation heatmap of the item series]**
 
 Every pair of the fifty series is substantially positively correlated — mean around 0.7, and even the weakest pair sits near 0.5. No block structure, no cluster of loners: one store, one demand climate, fifty noisy views of it. **Keep this matrix in mind.** If a model could look *across* channels, it would have fifty noisy measurements of the same seasonal signal to average over. Whether any architecture in this episode manages to cash that in is, frankly, the plot.
 
@@ -60,7 +60,7 @@ LSTM:  {'MAE': 6.973, 'RMSE': 9.328}    74,940 params
 
 Both clear the naive bar by a healthy margin — the incumbents are not strawmen — and they are statistically indistinguishable from each other, replicating episode 11's finding and roughly forty papers' worth of literature. The GRU carries the recurrent flag from here.
 
-> **[FIGURE 3 — notebook cell 41: observed 2017 test year for item 15 with the GRU's stitched weekly forecasts overlaid]**
+> **[FIGURE 3 — graphs/graph13-03.png — notebook cell 41: observed 2017 test year for item 15 with the GRU's stitched weekly forecasts overlaid]**
 
 The forecasts track the level, the annual swell, the weekly oscillation — a smoothed shadow of the truth. What no model will do is predict the day-to-day noise, and none should try: item-level demand has a large irreducible component, which is why the interesting differences below are measured in tenths of a unit, not leaps. The eyeball test is officially retired for this episode; the scoreboard decides.
 
@@ -78,9 +78,9 @@ Three roles, all derived from the same tokens in self-attention: the **query** i
 
 $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
 
-> **[FIGURE 4 — notebook cell 46, first plot: the 28-day standardized demand window]**
+> **[FIGURE 4 — graphs/graph13-04.png — notebook cell 46, first plot: the 28-day standardized demand window]**
 
-> **[FIGURE 5 — notebook cell 46, second plot: the 28×28 attention-weight heatmap, "rows ask, columns answer"]**
+> **[FIGURE 5 — graphs/graph13-05.png — notebook cell 46, second plot: the 28×28 attention-weight heatmap, "rows ask, columns answer"]**
 
 Reading the heatmap: row *i* shows how day *i* distributes one unit of attention over all 28 days. With raw values as embeddings, high-demand days attend to high-demand days and low to low — the weekly rhythm shows up as a plaid of bands, and the model discovers "days like me" without ever being told what a weekday is.
 
@@ -99,7 +99,7 @@ Exactly true, to machine precision. Attention is **permutation-equivariant**: re
 
 The standard patch is to stamp the position onto the token itself, so content-based lookup can see position *as content* — the **sinusoidal positional encoding**, a fingerprint of sines and cosines at geometrically spaced wavelengths added to every token.
 
-> **[FIGURE 6 — notebook cell 50: the positional-encoding matrix, embedding dimensions × 84 positions]**
+> **[FIGURE 6 — graphs/graph13-06.png — notebook cell 50: the positional-encoding matrix, embedding dimensions × 84 positions]**
 
 Two honest caveats before we trust the patch. Positional encoding makes order *recoverable*, not *respected* — the model must spend capacity learning to use the stamps, where a GRU gets order for free from its architecture. And the research record says this repair is only partly effective; the fixes that actually worked changed what a token is instead. Which brings us to the ladder.
 
@@ -123,7 +123,7 @@ vanilla transformer (flat head):  {'MAE': 7.122, 'RMSE': 9.365}    3,834,108 par
 
 Fifty-six times the GRU's parameters to achieve a dead heat with it. The problem is not the head.
 
-> **[FIGURE 7 — notebook cell 62: head-averaged 84×84 attention map from the trained vanilla model]**
+> **[FIGURE 7 — graphs/graph13-07.png — notebook cell 62: head-averaged 84×84 attention map from the trained vanilla model]**
 
 Pulling the attention map out of the trained model (a two-line sub-model idiom, in the notebook) shows what it chose to do with its freedom: soft vertical bands — a few reference days that every query consults — plus faint weekly texture. No crisp diagonal, no clean lag-7 or lag-364 stripes. Point-wise attention over noisy single-day tokens learned to be an expensive smoother. The diagnosis from our NumPy section stands: anti-order mechanism, semantically thin tokens, 84 high-resolution opportunities to overfit noise.
 
@@ -147,7 +147,7 @@ Note also what the linear model did *not* need: cross-channel information. Its c
 
 **Patching.** Instead of 84 one-day tokens, cut the window into six *fortnights* and make each segment one token. A token is no longer a semantic-free number; it is a **shape** — fourteen days containing two full weekly cycles, a level, a slope. Attention between such tokens compares local patterns ("does the fortnight two months ago look like the latest one?"), which is a question with actual forecasting content.
 
-> **[FIGURE 8 — notebook cell 72: one 84-day window drawn as six color-coded 14-day patches]**
+> **[FIGURE 8 — graphs/graph13-08.png — notebook cell 72: one 84-day window drawn as six color-coded 14-day patches]**
 
 The benefits compound nicely:
 
@@ -175,7 +175,7 @@ iTransformer:  {'MAE': 6.602, 'RMSE': 8.696}    277,646 params, ~6s to train
 
 **Best score of the episode** — the first transformer to beat not just the GRU (by 7%) but the linear reality check. The margin over the linear model, about 0.28 RMSE, is the honest measured value of cross-channel attention on this panel: fifty noisy views of one demand climate, finally allowed to denoise each other. And mind the cost column: the biggest accurate model of the episode trained in a *third* of the GRU's wall-clock time, because fifty parallel tokens on a GPU beat eighty-four sequential steps every day of the week.
 
-> **[FIGURE 9 — notebook cell 83, second plot: the trained iTransformer's 50×50 channel-to-channel attention map (the notebook shows it right after a re-plot of the correlation matrix, for comparison)]**
+> **[FIGURE 9 — graphs/graph13-10.png — notebook cell 83, second plot: the trained iTransformer's 50×50 channel-to-channel attention map (the notebook shows it right after a re-plot of the correlation matrix, for comparison)]**
 
 The promised diagnostic. The learned attention map is *not* a copy of the correlation matrix — it is sparser and directional, with a handful of bright **columns**. Columns are keys: a bright column is an item whose history many other items consult when forecasting themselves. The model has elected a few high-signal reference items as shared seasonal oracles — more economical than attending to everything, and something symmetric pairwise correlation cannot even express. This asymmetry is the fingerprint of learned, task-driven structure rather than mere co-movement.
 
@@ -191,9 +191,9 @@ lookback      GRU RMSE    iTransformer RMSE
 364 days        9.257          8.388
 ```
 
-> **[FIGURE 10 — notebook cell 88, first plot: test RMSE vs lookback window, GRU vs iTransformer]**
+> **[FIGURE 10 — graphs/graph13-11.png — notebook cell 88, first plot: test RMSE vs lookback window, GRU vs iTransformer]**
 
-> **[FIGURE 11 — notebook cell 88, second plot: training wall-clock seconds vs lookback window, GRU vs iTransformer]**
+> **[FIGURE 11 — graphs/graph13-12.png — notebook cell 88, second plot: training wall-clock seconds vs lookback window, GRU vs iTransformer]**
 
 This pair of plots is the strongest pro-transformer evidence in the episode, and it is a *scaling* argument, not a single-number one.
 
@@ -225,7 +225,7 @@ PatchTST             2.069   2.691   69,255
 
 The recurrent incumbent takes the rematch: best accuracy, three orders of magnitude fewer weights than the transformers it beats. The 203-parameter linear model lands mid-pack, between the two transformers. Everything clears both naive baselines comfortably, so all the models are doing real work — the transformers simply are not doing *more* work than the cheap alternatives, on a task that has nothing for them: no long-range dependencies to shortcut, no channels to attend across (an iTransformer on one channel is a one-token sequence — attention over a set of size one is a very expensive identity function), and small noisy data that rewards strong inductive biases. Reaching for a transformer here buys 22× the parameters for a slightly worse forecast.
 
-> **[FIGURE 12 — notebook cell 99: scatter of test RMSE vs parameter count (log scale), Melbourne rematch — GRU alone in the bottom-left]**
+> **[FIGURE 12 — graphs/graph13-13.png — notebook cell 99: scatter of test RMSE vs parameter count (log scale), Melbourne rematch — GRU alone in the bottom-left]**
 
 Accuracy against size, log axis, down-left is good. On the demand panel this plot would flatter the iTransformer; here the GRU owns the corner. **The same architectures, competently tuned, reverse their ranking when the data stops playing to attention's strengths.** Match the tool to the signal, not to the publication year.
 
@@ -246,7 +246,7 @@ seasonal naive (lag 364)         8.180   10.601          —       —
 seasonal naive (lag 7)           8.466   11.019          —       —
 ```
 
-> **[FIGURE 13 — notebook cell 104: horizontal bar chart of the scoreboard, bars annotated with parameter counts, color-coded by family]**
+> **[FIGURE 13 — graphs/graph13-14.png — notebook cell 104: horizontal bar chart of the scoreboard, bars annotated with parameter counts, color-coded by family]**
 
 Read it bottom to top and you get the whole episode in nine lines: the naive copies; a vanilla transformer that beats them but loses to 2014-vintage recurrence; the incumbents, solid and interchangeable; a 1,190-parameter linear model above them all — the result that forced the field to rethink; the patch transformer restoring attention to respectability; and the inverted transformer alone at the top, the only model that monetized the panel's cross-channel structure. Note how weakly bar length correlates with parameter count. In the small-data regime that most real forecasting lives in, that non-correlation is the deepest fact on the board.
 

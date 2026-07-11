@@ -24,7 +24,7 @@ https://github.com/tng-konrad/time-series-with-Konrad/blob/main/m12-fable-versio
 
 The scenario, made concrete. A retail chain has an established store with five years of daily sales history across 50 items — our **source domain**. It also has a recently opened store, where item 15 has been selling for about four months — our **target domain**. Head office wants weekly demand forecasts for the new store *now*. Same task everywhere (given 28 days of history, predict the next 7), but very different data budgets: the source offers roughly 40,000 training windows, the target offers 86.
 
-> **[FIGURE 1 — notebook cell 24: two-panel plot, three source series (top) and the target series (bottom)]**
+> **[FIGURE 1 — graphs/graph12-01.png — notebook cell 24: two-panel plot, three source series (top) and the target series (bottom)]**
 
 Look at the two panels and you can see why this is a *friendly* transfer setting. Every series — source and target alike — speaks the same shape grammar: an annual cycle, a weekly rhythm visible as the thickness of the band, a mild upward trend. What differs is the *level* — one item sells 20 units a day, another 100. The dynamics generalize; the scales don't.
 
@@ -32,7 +32,7 @@ That observation drives the single most load-bearing preprocessing decision of t
 
 ↪ *Why the scaler may only ever see training data is the crux of episode 8 on validation and leakage — the discipline that keeps every number in this post honest.* → **<LINK TO EPISODE 8 HERE>**
 
-> **[FIGURE 2 — notebook cell 26: the target series with the ignored history in grey, the 120 available days highlighted, the 84-day test period in green]**
+> **[FIGURE 2 — graphs/graph12-02.png — notebook cell 26: the target series with the ignored history in grey, the 120 available days highlighted, the 84-day test period in green]**
 
 The split is chronological, as always: the final 84 days are the test period — twelve non-overlapping one-week forecasts, walk-forward style, where the model receives the actual observed previous 28 days at each origin (the way it would in production) but is never retrained. One detail worth savoring in that plot: the test window covers the year-end demand slide. A model trained only on the 120 summer-and-autumn days *has never seen this part of the annual cycle*. That is not an unfair test; it is the realistic one. Whether a forecaster can anticipate a season it never observed locally is exactly where borrowed knowledge should earn its keep.
 
@@ -59,7 +59,7 @@ from scratch:    {'MAE': 15.82, 'RMSE': 20.05}
 
 Read that next to the baseline table. The deep network, trained from scratch on four months of data, **loses to copy-last-week** (20.05 vs 17.97). This deserves to be stated bluntly, because it is the single most common failure mode of deep learning on short series — and it is the standard argument for either staying classical or importing knowledge from elsewhere.
 
-> **[FIGURE 3 — notebook cell 38: observed test period vs the from-scratch forecast and the seasonal naive]**
+> **[FIGURE 3 — graphs/graph12-03.png — notebook cell 38: observed test period vs the from-scratch forecast and the seasonal naive]**
 
 The picture explains the number. The scratch network has learned the weekly wiggle — walk-forward evaluation feeds it fresh true history every week, so the oscillations sit in roughly the right places — but its level tracking is loose, and through the December decline it drifts, because nothing in its 120 training days told it that demand falls in winter. Seasonal naive tracks the level embarrassingly well for a method with zero parameters; its weakness is being exactly one week behind every change. Keep both failure patterns in mind. The transfer rungs will fix the network's; nothing will fix the baseline's.
 
@@ -102,7 +102,7 @@ full fine-tune:  {'MAE': 11.58, 'RMSE': 14.85}
 
 Best score of the episode. And the ordering that has emerged — scratch 20.05 → zero-shot 15.63 → head-only 15.36 → full 14.85 — is the canonical transfer learning result, worth internalizing as a hierarchy of *how much you trust the target data*: not at all, only to calibrate the readout, or to gently reshape the representation itself.
 
-> **[FIGURE 4 — notebook cell 53: observed test period vs from-scratch and full fine-tune forecasts]**
+> **[FIGURE 4 — graphs/graph12-04.png — notebook cell 53: observed test period vs from-scratch and full fine-tune forecasts]**
 
 The picture is the episode's thesis in one frame. The fine-tuned forecast holds the weekly amplitude steadily and — the decisive difference — *follows the year-end decline down*, because its encoder watched four winters happen in fifty other series. The scratch model, whose entire worldview is one summer, has no reason to expect December to differ from October. Transfer learning's contribution is not sharper wiggles; it is **imported seasonal context** that the target's own history could never provide.
 
@@ -112,13 +112,13 @@ So far, pretraining was supervised — possible because forecasting labels come 
 
 Family one is **generative / reconstructive**: corrupt the input, train the model to restore it. The lineage runs from TimeNet (a GRU autoencoder trained across many datasets at once) to Ti-MAE and the masked-patch transformers; our recurrent version masks 40% of the timesteps in each source window — zeroing them, which after standardization means "an unremarkable day" — and trains an encoder–decoder to reconstruct the original from the corrupted version. Filling a hole mid-week requires knowing where in the weekly cycle it sits; filling several consecutive holes requires a sense of the local trend. In principle, exactly the skills a forecaster needs.
 
-> **[FIGURE 5 — notebook cell 56: one source window, original vs the masked input with 40% of days zeroed]**
+> **[FIGURE 5 — graphs/graph12-05.png — notebook cell 56: one source window, original vs the masked input with 40% of days zeroed]**
 
 The encoder is *identical in shape* to the forecaster's encoder — that's what makes the coming transplant a one-liner — and the decoder is the seq2seq skeleton from episode 11 (`RepeatVector`, GRU, `TimeDistributed(Dense(1))`). The fit call is where self-supervision becomes visible: input `X_masked`, target `X_original`, labels nowhere in sight.
 
 So it trains, the loss goes down, and then we do the thing this series always does: *look at what was actually learned*.
 
-> **[FIGURE 6 — notebook cell 60: original window, masked input, and the autoencoder's reconstruction — which is a nearly flat line at the window's mean level]**
+> **[FIGURE 6 — graphs/graph12-06.png — notebook cell 60: original window, masked input, and the autoencoder's reconstruction — which is a nearly flat line at the window's mean level]**
 
 An honest look at that reconstruction is worth more than a flattering one. The autoencoder nails the window's *level* and slow drift — and essentially nothing else; the day-to-day structure is smoothed into a near-flat line. This is not a training bug. It is what minimizing MSE through a 64-number bottleneck rationally does when the fine structure of noisy demand is hard to pin down: predicting each window's own average is a safe, low-loss strategy. But it is a warning sign, because our standardization already removed the level. An encoder whose code mostly says "this window sits 1.2 standard deviations above its mean" has learned something *true* and possibly something *useless*.
 
@@ -138,7 +138,7 @@ Family two abandons reconstruction entirely. **Contrastive learning** creates tw
 
 The augmentations are the design decision, because **choosing augmentations is choosing your invariances**. Ours: random amplitude scaling (each window multiplied by a factor in 0.8–1.2 — "overall size is a nuisance") and jitter (small Gaussian noise — "day-level noise is a nuisance"). What survives both is the window's *shape*, so shape is what the embedding encodes.
 
-> **[FIGURE 7 — notebook cell 65: one source window and its two augmented views — a positive pair]**
+> **[FIGURE 7 — graphs/graph12-07.png — notebook cell 65: one source window and its two augmented views — a positive pair]**
 
 The loss — **NT-Xent**, inherited from SimCLR — reads as a classification problem in disguise:
 
@@ -168,7 +168,7 @@ target history   from scratch   full fine-tune
 480 days            14.22           13.82
 ```
 
-> **[FIGURE 8 — notebook cell 77: test RMSE vs days of target history, both methods, with the seasonal-naive bar as a horizontal reference line]**
+> **[FIGURE 8 — graphs/graph12-08.png — notebook cell 77: test RMSE vs days of target history, both methods, with the seasonal-naive bar as a horizontal reference line]**
 
 Read it as a practitioner's decision chart. The fine-tuned curve is **low and steady** — even 60 days (a mere 26 windows!) lands within a point and a half of the best result. The scratch curve is **high and erratic**, and not even monotonic: 240 days scores *worse* than 120, because at these sample sizes training is so seed- and split-sensitive that luck dominates. That instability is itself a finding — below a few hundred days, a from-scratch deep model is not merely worse on average, it is *unreliable*. The vertical gap between the curves is what pretraining is worth at each data size, and it is largest exactly where forecasting is hardest. **Transfer learning buys the most precisely when you have the least.**
 
@@ -201,7 +201,7 @@ weather zero-shot         16.78   20.78
 persistence               24.14   29.04
 ```
 
-> **[FIGURE 9 — notebook cell 85: horizontal bar chart of test RMSE, color-coded by source (matched source / mismatched source / target-only), with the seasonal-naive bar as a vertical reference line]**
+> **[FIGURE 9 — graphs/graph12-09.png — notebook cell 85: horizontal bar chart of test RMSE, color-coded by source (matched source / mismatched source / target-only), with the seasonal-naive bar as a vertical reference line]**
 
 Two honest readings. First, the podium belongs entirely to supervised transfer — and even zero-shot, which used **no target data at all**, beat everything trained on the target alone. Second, look where the naive baseline sits: above the entire self-supervised contingent, above scratch, above both weather transfers. On this target, the only methods that justified a neural network's existence were the ones that arrived pretrained on relevant data. Matched-source pretraining plus gentle fine-tuning cut the from-scratch error by a quarter and cleared the strong baseline by three RMSE points — on a series with four months of history. Everything else on the board is a way of spending a complexity budget without earning it back.
 

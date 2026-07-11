@@ -29,11 +29,11 @@ The whole episode runs on three headline series — real GDP, real consumption, 
 
 Why logs? Two reasons that never change: logs turn exponential growth into roughly linear trends, and they make differences interpretable as percentage changes — `g_gdp = 0.5` reads as "GDP grew half a percent this quarter".
 
-> **[FIGURE 1 — notebook cell 22]** Log levels of US real GDP, consumption, and investment, 1959–2009: three lines climbing together for five decades, with investment (red) visibly jagged — deep plunges in 1975, 1982, and 2008 — while consumption is nearly smooth.
+> **[FIGURE 1 — graphs/graph09-01.png — notebook cell 22]** Log levels of US real GDP, consumption, and investment, 1959–2009: three lines climbing together for five decades, with investment (red) visibly jagged — deep plunges in 1975, 1982, and 2008 — while consumption is nearly smooth.
 
 Three things to register in this plot, because each one becomes a section later. The lines *trend* — the mean changes over time, the textbook signature of non-stationarity. The lines *climb together* — bound by accounting (consumption and investment are components of GDP) and by the shared business cycle; "moving together" is what cointegration will later try to formalize. And investment is the drama queen of the national accounts, plunging in every recession while consumption barely flinches — remember that when we ask which variable does the *adjusting* in the error-correction model.
 
-> **[FIGURE 2 — notebook cell 24]** The same three series as quarterly growth rates: trends gone, all three oscillating around a stable mean, with investment swinging ±10% per quarter while consumption rarely leaves the ±2% band.
+> **[FIGURE 2 — graphs/graph09-02.png — notebook cell 24]** The same three series as quarterly growth rates: trends gone, all three oscillating around a stable mean, with investment swinging ±10% per quarter while consumption rarely leaves the ±2% band.
 
 Eyeballs are not a test, so we formalize with the two-test battery from episode 3, run through one helper: **ADF** (null: unit root) and **KPSS** (null: stationary). Opposite nulls is the point — when they agree, the verdict is solid; when they disagree, the series is telling you it lives near the boundary.
 
@@ -132,7 +132,7 @@ Taken at face value, lag 1 says investment Granger-causes consumption (p = 0.015
 
 Instead of pairwise isolation, test each link within the fitted three-variable VAR: does X's past improve the prediction of Y **after controlling for everyone else's past**?
 
-> **[FIGURE 3 — notebook cell 48]** Heatmap of conditional Granger p-values, rows = effect, columns = cause, dark green = strong link. Clear links: cons → gdp (0.000) and cons → inv (0.000); pale borderline cells: gdp → inv (0.014) and inv → cons (0.049); nothing predicts consumption.
+> **[FIGURE 3 — graphs/graph09-03.png — notebook cell 48]** Heatmap of conditional Granger p-values, rows = effect, columns = cause, dark green = strong link. Clear links: cons → gdp (0.000) and cons → inv (0.000); pale borderline cells: gdp → inv (0.014) and inv → cons (0.049); nothing predicts consumption.
 
 The suspicious `inv → cons` link survived conditioning only barely — attenuated from p = 0.015 to p = 0.049, a three-fold jump. On simulated data with a known chain structure, such spurious links vanish outright; on real data, where everything is a little connected to everything, this is the typical outcome: the link weakens to the boundary, and your confidence should weaken with it.
 
@@ -156,7 +156,7 @@ Sections above took the differencing fork: safe, stationary, and *blind to level
 
 We regress log *real* GDP on the log *price level* (CPI) — real output "explained" by how expensive things are, a relationship with no serious economic content at this frequency.
 
-> **[FIGURE 4 — notebook cell 53]** Two scatter plots. Left: log real GDP vs log CPI in levels — a tight, snaking, near-perfect relationship, R² = 0.958. Right: the identical regression on growth rates — a shapeless cloud, R² = 0.004.
+> **[FIGURE 4 — graphs/graph09-04.png — notebook cell 53]** Two scatter plots. Left: log real GDP vs log CPI in levels — a tight, snaking, near-perfect relationship, R² = 0.958. Right: the identical regression on growth rates — a shapeless cloud, R² = 0.004.
 
 ```
 R² in levels: 0.958        R² in growth rates: 0.004
@@ -241,7 +241,7 @@ The clean one is **α**: GDP essentially ignores the disequilibrium (0.0003 ≈ 
 
 The confessional one is **β**. A textbook great-ratio equilibrium would carry weights near the component shares — something like `log_gdp − 0.7·log_cons − 0.2·log_inv`. Coefficients of −6.4 and +4.3 do not look like that; they are what maximum likelihood extracts when the underlying equilibrium is weak and drifting, as our sensitivity grid warned. Borderline rank evidence buys you imprecisely identified equilibrium coefficients. And there is a final exam any claimed cointegrating relation must sit: compute the combination `β′·X(t)` and *look at it*.
 
-> **[FIGURE 5 — notebook cell 64]** The estimated error-correction term over 1959–2009, with its long-run mean as a dashed red line. Instead of busy oscillation around the mean, the series moves in slow multi-year swells — above the mean through most of the 1960s, sagging through the late 1980s and early 1990s — and exits the sample with a violent 2008–09 plunge that looks like anything but mean-reversion.
+> **[FIGURE 5 — graphs/graph09-05.png — notebook cell 64]** The estimated error-correction term over 1959–2009, with its long-run mean as a dashed red line. Instead of busy oscillation around the mean, the series moves in slow multi-year swells — above the mean through most of the 1960s, sagging through the late 1980s and early 1990s — and exits the sample with a violent 2008–09 plunge that looks like anything but mean-reversion.
 
 ```
 ADF p-value of the spread: 0.256
@@ -326,13 +326,13 @@ We demonstrate on the canonical monetary system: **output growth → inflation �
 
 AIC picks 6 lags. We compute **orthogonalized impulse responses** — the Cholesky factorization in our chosen order converts correlated reduced-form residuals into uncorrelated "structural" shocks, and we trace the economy's response to a one-standard-deviation surprise in the T-bill rate: the closest a 1959–2009 observational dataset gets to "what happens when the Fed unexpectedly tightens?"
 
-> **[FIGURE 6 — notebook cell 78]** Impulse responses to a T-bill rate shock, 16 quarters, dashed 95% bands. Top: output growth — a brief positive blip, then negative from about two quarters out, staying mostly below zero for two years. Middle: inflation — *rising* for the first several quarters after the tightening. Bottom: the rate itself, decaying slowly back.
+> **[FIGURE 6 — graphs/graph09-06.png — notebook cell 78]** Impulse responses to a T-bill rate shock, 16 quarters, dashed 95% bands. Top: output growth — a brief positive blip, then negative from about two quarters out, staying mostly below zero for two years. Middle: inflation — *rising* for the first several quarters after the tightening. Bottom: the rate itself, decaying slowly back.
 
 The output panel is the textbook story: tighter money bites with the famous "long and variable" lag, and the wide bands remind you macro effects are estimated, not etched. The middle panel is the gift that keeps on giving: inflation *goes up* after a contractionary shock. This is not a bug in the notebook — it is the celebrated **price puzzle**, one of the most replicated artifacts in empirical macro. The standard diagnosis: the Fed tightens when it *sees inflation coming* that our little three-variable system does not; the model then misreads anticipatory tightening as causing the inflation that follows. It is the omitted-variable trap from the Granger section, resurfacing at the structural level — richer systems add commodity prices or Fed forecasts to make it fade.
 
 I could not have scripted a better closing exhibit for identification-by-assumption: the ordering was plausible, the code is correct, and the result still contains a well-understood distortion because *the system is too small for the assumption to be true*. Structural conclusions inherit the quality of their identifying assumptions. Always.
 
-> **[FIGURE 7 — notebook cell 80]** Forecast error variance decomposition, three panels. Output-growth uncertainty stays ~86% own-shock at the four-year horizon. The T-bill rate panel is the interesting one: its own shock explains only ~31% of its long-horizon variance — roughly 50% is output shocks, ~18% inflation.
+> **[FIGURE 7 — graphs/graph09-07.png — notebook cell 80]** Forecast error variance decomposition, three panels. Output-growth uncertainty stays ~86% own-shock at the four-year horizon. The T-bill rate panel is the interesting one: its own shock explains only ~31% of its long-horizon variance — roughly 50% is output shocks, ~18% inflation.
 
 The FEVD asks the complementary question — at each horizon, what *share* of each variable's forecast uncertainty does each shock explain? The punchline sits in the bottom panel: the "policy instrument" is mostly *endogenous*. The Fed spends the bulk of its variance reacting to the economy rather than surprising it — which is what a central bank is supposed to look like in the data, and a fitting last word for an episode about disentangling who-drives-whom: **the variable everyone calls "the cause" is itself mostly an effect.**
 

@@ -22,11 +22,11 @@ https://github.com/tng-konrad/time-series-with-Konrad/blob/main/m14-fable-versio
 
 The dataset is an old friend: the Kaggle store-item demand data from episodes 12 and 13 — five years (2013–2017) of daily unit sales. We take store 1, pivot it into a 1,826 × 50 panel (one row per day, one column per item), and pick item 1 as the close-up series: about 20 units a day, and five years of it show three structures stacked on top of each other.
 
-> **[FIGURE 1 — notebook cell 20: full 2013–2017 daily sales of store 1, item 1]**
+> **[FIGURE 1 — graphs/graph14-01.png — notebook cell 20: full 2013–2017 daily sales of store 1, item 1]**
 
 A slow upward trend, an annual cycle peaking every summer, and a furry texture of week-scale noise. Nothing exotic — which is the point. Keep in mind, though, that fifty well-behaved daily series is *friendly* data; that friendliness will matter when we interpret the results.
 
-> **[FIGURE 2 — notebook cell 22: the last 120 days of the same series]**
+> **[FIGURE 2 — graphs/graph14-02.png — notebook cell 22: the last 120 days of the same series]**
 
 Zooming into the final 120 days reveals what the full plot smears out: a stubborn **weekly seesaw** — weekend peaks, midweek troughs — riding the autumn downslope of the annual cycle. Our forecast horizon is 14 days: exactly two full periods of this rhythm. Any competent forecaster must reproduce the seesaw, not just the level.
 
@@ -39,7 +39,7 @@ seasonal naive:  {'MAE': 5.36,  'RMSE': 6.53}
 
 Copy-yesterday versus copy-last-week, and last week wins by nearly a factor of two — the weekly cycle carries most of the predictable signal. **Seasonal naive is the bar: it costs nothing, trains nothing, and knows nothing except "weeks repeat."**
 
-> **[FIGURE 3 — notebook cell 28: seasonal naive forecast vs actuals, first origin]**
+> **[FIGURE 3 — graphs/graph14-03.png — notebook cell 28: seasonal naive forecast vs actuals, first origin]**
 
 It nails the *shape* — weekend peaks land on weekends — but copies last week's level and noise verbatim, wiggles and all. Those two failure modes (level drift and noise-copying) are precisely the headroom any learned model has to work with.
 
@@ -54,7 +54,7 @@ linear:  1,190 parameters,  4.5s to train
 GRU:    13,774 parameters, 23.5s to train
 ```
 
-> **[FIGURE 4 — notebook cell 38: linear specialist forecast vs actuals, first origin]**
+> **[FIGURE 4 — graphs/graph14-04.png — notebook cell 38: linear specialist forecast vs actuals, first origin]**
 
 The linear model scores RMSE **5.04** on the close-up window — a clear improvement over seasonal naive's 6.53, and the plot shows why: it keeps the weekly seesaw but *smooths away* last week's idiosyncratic wiggles (it has averaged over sixteen thousand training windows, not copied one week), and it sits slightly below last week's level, having learned the autumn downslope. The GRU, on the same window, scores **6.64** — worse than the linear model, echoing episode 13. Hold that ranking loosely: one forecast is fourteen noisy days of one series, and single-window verdicts are close to coin flips. The 120-forecast scoreboard will have the final word (and a surprise).
 
@@ -70,7 +70,7 @@ The field converged on two answers. We build both, in a few lines of NumPy, on o
 
 **Patching** — episode 13's big idea, industrialized. One `reshape` cuts a 512-day context into 16 non-overlapping blocks of 32 days; inside the real model each block is pushed through a small MLP to become one embedding vector, and *those* are the tokens.
 
-> **[FIGURE 5 — notebook cell 47: the last six patches, each 32-day block one colored segment]**
+> **[FIGURE 5 — graphs/graph14-06.png — notebook cell 47: the last six patches, each 32-day block one colored segment]**
 
 Sixteen tokens instead of 512 shrinks the attention matrix to **under 0.1%** of its one-token-per-day size — this is what makes 16k-point contexts feasible at all. And the semantic argument matters as much as the economics: like a word compared to a letter, a patch is a unit *worth attending to*. A single day is mostly noise; a 32-day shape — four weekly cycles and a stretch of seasonal slope — is a recognizable pattern.
 
@@ -85,7 +85,7 @@ Round-trip error (RMSE, sales units): 0.002
 
 The series is now literally a sentence of integers, and a T5 language model can be trained on such sentences with ordinary cross-entropy, predicting a *distribution over the vocabulary* for the next token — probabilistic forecasts by construction. Note two things in the printout. The discretization loss is trivial: 0.002 sales units, invisible next to day-to-day noise. And our series uses only **37 of the 4,096 words** — the vocabulary is sized for the diversity of a whole pre-training universe, not one series.
 
-> **[FIGURE 6 — notebook cell 52: the last 120 days as a step plot of token ids]**
+> **[FIGURE 6 — graphs/graph14-07.png — notebook cell 52: the last 120 days as a step plot of token ids]**
 
 The same 120 days as before, now written in a 4,096-symbol alphabet. The weekly seesaw is perfectly recognizable — and this picture is the entire Chronos hypothesis in one image: *if the structure survives tokenization, a language model can learn its grammar.*
 
@@ -128,7 +128,7 @@ TimesFM 2.5: {'MAE': 4.95, 'RMSE': 5.55}
 
 Read that first line again. The GRU needed 23.5 seconds of training before it could forecast anything — and pays again for every new dataset. TimesFM produced all 120 forecasts, for series it had never seen, in six seconds flat.
 
-> **[FIGURE 7 — notebook cell 60: TimesFM 2.5 zero-shot forecast with 80% band, first origin]**
+> **[FIGURE 7 — graphs/graph14-08.png — notebook cell 60: TimesFM 2.5 zero-shot forecast with 80% band, first origin]**
 
 A genuinely learned forecast, not a copied week: smooth weekly seesaw, correctly depressed level, and — new for this series — a coral uncertainty band that visibly *widens with horizon*, day 14 admitting more doubt than day 1. That fan is textbook forecasting behavior, produced zero-shot. The 64% coverage on this single window is under the nominal 80%, but fourteen days decide nothing; the verdict on calibration waits for the full arena.
 
@@ -147,7 +147,7 @@ TiRex: {'MAE': 5.04, 'RMSE': 5.75}
 80% interval coverage: 0.64
 ```
 
-> **[FIGURE 8 — notebook cell 65: TiRex zero-shot forecast with 80% band, first origin]**
+> **[FIGURE 8 — graphs/graph14-09.png — notebook cell 65: TiRex zero-shot forecast with 80% band, first origin]**
 
 Statistically indistinguishable from TimesFM on the close-up, from a model one-sixth the size with a completely different computational core. The deeper lesson of this rung: **at today's scale of pre-training data, the backbone — attention versus recurrence — matters less than the recipe** of patches, masking, and massive multi-domain exposure. Episode 13's architecture war, at foundation scale, ends in a draw once everyone gets the same food. (A successor, **TiRex-2**, extends the recipe to multivariate inputs and known-future covariates; its checkpoint is gated on Hugging Face, so we run the original.)
 
@@ -162,7 +162,7 @@ Chronos-2: {'MAE': 4.9, 'RMSE': 5.62}
 80% interval coverage: 0.57
 ```
 
-> **[FIGURE 9 — notebook cell 70: Chronos-2 zero-shot forecast with 80% band, first origin]**
+> **[FIGURE 9 — graphs/graph14-10.png — notebook cell 70: Chronos-2 zero-shot forecast with 80% band, first origin]**
 
 The fastest of the three — from a model that would have been the slowest in its first incarnation — and a close-up RMSE between its two ladder-mates. All three foundation models have now landed in the same neighborhood on this window (5.55–5.75, versus 5.04 for the linear specialist), which is itself the finding: **three alien architectures, trained by three companies on three different data piles, agree with each other more than they differ from the locals.**
 
@@ -194,7 +194,7 @@ Chronos-2                 yes   7.74    1.86       0.80          0.3
 Chronos-2 (group)         yes   8.01    1.91       0.79          0.8
 ```
 
-> **[FIGURE 10 — notebook cell 79: horizontal bar chart of arena RMSE, zero-shot models in green, trained specialists in blue]**
+> **[FIGURE 10 — graphs/graph14-11.png — notebook cell 79: horizontal bar chart of arena RMSE, zero-shot models in green, trained specialists in blue]**
 
 Read it slowly; there is a lot in seven rows.
 
@@ -227,7 +227,7 @@ Linear (trained on 60d)      8.47
 
 The ranking tells the story cleanly. **The zero-shot models degrade gracefully**: TiRex and Chronos-2 lead the 60-day field — and TiRex on 60 days *beats the GRU trained on five years*. Sixty days is two months of weekly cycles: enough for a model that has seen a million weekly rhythms to lock on. **The starved specialists don't degrade — they collapse**: the 60-day linear model finishes behind seasonal naive (nineteen windows cannot estimate an honest 28×14 map), and the 60-day GRU essentially ties the free baseline. Training on a cold series buys you complexity risk, not accuracy. And one more reading, easy to miss: **history still helps the history-lovers** — Chronos-2 with its full 512-day context remains the best number in the table. A foundation model is not a reason to throw history away; it is a way to survive not having any.
 
-> **[FIGURE 11 — notebook cell 86: TiRex forecasting from only 60 days of history, with 80% band — everything the model was given is on screen]**
+> **[FIGURE 11 — graphs/graph14-12.png — notebook cell 86: TiRex forecasting from only 60 days of history, with 80% band — everything the model was given is on screen]**
 
 Sixty days in, a calibrated two-week forecast out — seesaw in place, level tracked, honest band around it. Rewind to episode 2 and consider what this plot would have taken: identify the seasonality, difference the trend, pick orders, fit, diagnose, iterate. Whatever reservations the next section raises, *this* — competent probabilistic forecasts on data-starved series, for free — is the genuinely new capability. (Standard caveat: one origin, one item; a demonstration of the mechanism, not a benchmark. The mechanism replicates at scale in the literature.)
 

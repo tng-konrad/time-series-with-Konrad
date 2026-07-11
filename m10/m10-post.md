@@ -57,7 +57,7 @@ Enough architecture. Let's meet a river.
 
 ## Groundwork: the Nile, and an engine you can read
 
-> **[FIGURE 1 — notebook cell 20]** Annual flow volume of the Nile at Aswan, 1871–1970, with a red dashed line marking the first Aswan dam (1899). Noisy year-to-year swings around a level that visibly steps down after the dam: flows before 1899 average about 1,100, after about 850.
+> **[FIGURE 1 — graphs/graph10-01.png — notebook cell 20]** Annual flow volume of the Nile at Aswan, 1871–1970, with a red dashed line marking the first Aswan dam (1899). Noisy year-to-year swings around a level that visibly steps down after the dam: flows before 1899 average about 1,100, after about 850.
 
 The **Nile dataset** — one hundred annual flow measurements, 1871–1970, bundled with statsmodels — is *the* canonical state space example, the running case study of the Durbin & Koopman book itself. And it earns the status: year-to-year swings of a hundred units are routine, occasional jumps reach three or four hundred, and around 1899 — when the first Aswan dam began operating — the entire band of values steps down. Not a trend, not seasonality: a *level shift*. A hidden "true level" that changes over time, observed through noisy annual readings — you could not invent a cleaner specimen for a model that tracks exactly that.
 
@@ -88,7 +88,7 @@ The predicted state paths agree to **10⁻¹²** — our forty lines and statsmo
 
 **The burn-in.** Our raw likelihood sum initially *disagreed* with statsmodels — by exactly one observation's worth. Under diffuse initialization the first innovation has essentially infinite variance, so its likelihood term is meaningless noise, and statsmodels quietly drops ("burns") it. Sum our per-observation contributions from the second observation onward and the two engines agree to four decimals. Initialization conventions are precisely the kind of detail that silently ruins cross-library comparisons; now you know where to look. *(This gotcha returns later in the episode — it is why two correct implementations of the same model can report different log-likelihoods while agreeing on every parameter.)*
 
-> **[FIGURE 2 — notebook cell 29]** The hand-built filter tracking the Nile: noisy observations in blue, one-step-ahead predictions in red. The red line chases aggressively in the first few years (diffuse start → large gain), then settles into a smooth track that shrugs off single noisy years but follows the sustained post-1899 drop.
+> **[FIGURE 2 — graphs/graph10-02.png — notebook cell 29]** The hand-built filter tracking the Nile: noisy observations in blue, one-step-ahead predictions in red. The red line chases aggressively in the first few years (diffuse start → large gain), then settles into a smooth track that shrugs off single noisy years but follows the sustained post-1899 drop.
 
 Each red point is the model's guess for that year *before seeing it*, using only the past. Ignore the noise, follow the signal — that balance is the Kalman gain doing its job with weights derived from the two estimated variances, not from any smoothing constant we chose. Speaking of which…
 
@@ -114,7 +114,7 @@ sigma2.level     ≈  1,479      -> the level itself drifts with sd ≈ 38 per y
 
 Their ratio — the **signal-to-noise ratio** q = σ²_η/σ²_ε ≈ 0.10 — is the single most interpretable number in the model: the level moves, but roughly *ten times more slowly* than the noise around it. This is precisely the resolution of the ADF puzzle, now quantified: the level is not constant (q > 0), but nearly all year-to-year variation is measurement noise, not signal. The summary's Ljung–Box and Jarque–Bera diagnostics read clean — two parameters are, statistically, enough for this river. And keep q in your pocket: in a few sections it reappears wearing a different letter, and the costume reveal is the best joke the framework tells.
 
-> **[FIGURE 3 — notebook cell 34]** Observed flow (faint blue) with two level estimates: the filtered level (orange) and the smoothed level (red), dam marked in grey. The orange line reacts to the 1899 break with a visible lag; the red line concentrates the drop in the years around the dam — sliding from ~1,070 in 1890 through ~1,000 on the eve of the dam to ~870 by 1902 — and stays there.
+> **[FIGURE 3 — graphs/graph10-03.png — notebook cell 34]** Observed flow (faint blue) with two level estimates: the filtered level (orange) and the smoothed level (red), dam marked in grey. The orange line reacts to the 1899 break with a visible lag; the red line concentrates the drop in the years around the dam — sliding from ~1,070 in 1890 through ~1,000 on the eve of the dam to ~870 by 1902 — and stays there.
 
 This plot teaches the most important conceptual distinction in state space practice: **filtering versus smoothing**. The *filtered* estimate at year t uses only data up to t — what you could have known in real time. The *smoothed* estimate runs a second, backward recursion and uses the entire sample — later observations revise earlier state estimates. The difference is starkest exactly where it matters, at the break: the filter needs several post-dam years of low readings before it believes the regime changed (in real time, two low years might just be noise), while the smoother, knowing the future, pins the drop where it happened.
 
@@ -134,11 +134,11 @@ y_t   = μ_t + ε_t
 
 For this we need a trending series, and the series has one on staff: the monthly **airline passengers** data from episode 2.
 
-> **[FIGURE 4 — notebook cell 37]** Two panels: raw airline passengers 1949–1960 (seasonal swings growing with the level) and the same series in logs (swings now constant-width, trend gently linear).
+> **[FIGURE 4 — graphs/graph10-04.png — notebook cell 37]** Two panels: raw airline passengers 1949–1960 (seasonal swings growing with the level) and the same series in logs (swings now constant-width, trend gently linear).
 
 We model in logs — the raw series has *multiplicative* seasonality (swings grow with the level), our structural models are additive machines, and the log is the standard bridge. All forecasts get exponentiated back before scoring, so every RMSE below is in honest passenger units. The split is the usual chronological one: last 24 months held out, two full seasonal cycles, so a model that fakes seasonality gets caught.
 
-> **[FIGURE 5 — notebook cell 39]** The local linear trend forecast: a smooth green exponential ramp through a zigzagging holdout, with a 95% interval fanning out dramatically. RMSE ≈ 101 passengers.
+> **[FIGURE 5 — graphs/graph10-05.png — notebook cell 39]** The local linear trend forecast: a smooth green exponential ramp through a zigzagging holdout, with a 95% interval fanning out dramatically. RMSE ≈ 101 passengers.
 
 ```
 Local linear trend: {'MAE': 76.41, 'RMSE': 100.68}
@@ -150,7 +150,7 @@ Deliberately underwhelming, and the picture explains why better than the number:
 
 One keyword — `seasonal=12` — and the state vector grows from 2 to 13: eleven extra states carrying the seasonal pattern, constrained to sum to zero over any full year, each allowed to evolve slowly via its own shock. This is the classic trend + seasonal + noise decomposition of episode 1 — but as *one coherent probability model*, estimated in one pass, with a likelihood and error bars.
 
-> **[FIGURE 6 — notebook cell 42]** The basic structural model forecast: green dashed line riding the seasonal sawtooth through both holdout years, peaks and troughs inside a sanely narrow interval. RMSE ≈ 33.
+> **[FIGURE 6 — graphs/graph10-06.png — notebook cell 42]** The basic structural model forecast: green dashed line riding the seasonal sawtooth through both holdout years, peaks and troughs inside a sanely narrow interval. RMSE ≈ 33.
 
 ```
 Basic structural model: {'MAE': 27.72, 'RMSE': 32.58}
@@ -164,7 +164,7 @@ estimated variances:
 
 A third of the trend-only model's error. And the estimated variances repay a slow read — one of them is a small masterpiece: **σ²_trend = 0.000000**. Maximum likelihood has driven the slope's shock variance to zero, which is the model saying "the data prefers a *fixed* growth rate on the log scale" — steady percentage growth, entirely plausible for 1950s aviation. We *offered* a stochastic slope; the likelihood declined the stochasticity. This is the state space framework doing model selection from the inside, and when a variance hits a boundary like this, the model is telling you something structural. Listen.
 
-> **[FIGURE 7 — notebook cell 44]** `plot_components` output: smoothed level (effectively the seasonally-adjusted log series), the trend panel flat at a constant — as its zero variance dictates — and the seasonal panel repeating its annual shape with only gentle evolution. Every component wears a confidence band.
+> **[FIGURE 7 — graphs/graph10-07.png — notebook cell 44]** `plot_components` output: smoothed level (effectively the seasonally-adjusted log series), the trend panel flat at a constant — as its zero variance dictates — and the seasonal panel repeating its annual shape with only gentle evolution. Every component wears a confidence band.
 
 The structural model's party trick: the fitted model *is* a decomposition, so it can draw its own anatomy. Unlike the moving-average decompositions of episode 1, every curve here is an estimated state with a posterior variance — **decomposition with error bars**.
 
@@ -185,7 +185,7 @@ Look at what R is doing: **two states, one source of randomness.** This is the f
 
 We fit the most famous specification in the literature — the **airline model**, SARIMA(0,1,1)(0,1,1)₁₂, *named after this very dataset* (episode 3 alumni will feel at home):
 
-> **[FIGURE 8 — notebook cell 47]** The SARIMAX airline-model forecast: clearly seasonal, tracking the sawtooth, sitting a touch low. RMSE ≈ 43.
+> **[FIGURE 8 — graphs/graph10-08.png — notebook cell 47]** The SARIMAX airline-model forecast: clearly seasonal, tracking the sawtooth, sitting a touch low. RMSE ≈ 43.
 
 ```
 SARIMAX airline model: {'MAE': 39.45, 'RMSE': 43.19}
@@ -193,7 +193,7 @@ SARIMAX airline model: {'MAE': 39.45, 'RMSE': 43.19}
 
 The fit-forecast-evaluate code is *identical* to the structural model's — same `get_forecast`, same helpers — which is the unification made tangible: one workflow, different matrix fillings. The score is the interesting part: respectable, clearly seasonal, and a notch behind the basic structural model (33) *on the dataset this ARIMA specification was named after*. Differencing twice — regular plus seasonal — is a heavier-handed way to remove structure than modeling it, and a two-year horizon feels the difference.
 
-> **[FIGURE 9 — notebook cell 49]** The four-panel diagnostics: standardized innovations over time (no drift), histogram + KDE vs N(0,1) (close), Q–Q plot (hugging the line, mild tails), correlogram (no significant spikes).
+> **[FIGURE 9 — graphs/graph10-09.png — notebook cell 49]** The four-panel diagnostics: standardized innovations over time (no drift), histogram + KDE vs N(0,1) (close), Q–Q plot (hugging the line, mild tails), correlogram (no significant spikes).
 
 The diagnostics pass — this is *not* a misspecified model, just one that generalizes slightly worse here. That distinction (specification failure vs genuine out-of-sample difference between adequate models) is exactly the kind of verdict only a held-out future can deliver, which is why we always keep one.
 
@@ -252,7 +252,7 @@ RMSE inside the gap - Kalman smoother    : 172.25
 RMSE inside the gap - linear interpolation: 185.15
 ```
 
-> **[FIGURE 10 — notebook cell 62]** The Nile with the 1911–1925 block shaded grey: full data in faint blue (the hidden truth), gapped observations in green, and the smoothed level in red bridging the hole with a gently sloping line between the level estimates at the gap's edges.
+> **[FIGURE 10 — graphs/graph10-10.png — notebook cell 62]** The Nile with the 1911–1925 block shaded grey: full data in faint blue (the hidden truth), gapped observations in green, and the smoothed level in red bridging the hole with a gently sloping line between the level estimates at the gap's edges.
 
 Two readings, one modest and one important. The modest one: the Kalman reconstruction beats naive linear interpolation, 172 vs 185 — real but not dramatic, because for a local level model the optimal bridge genuinely *is* close to a sloping line. The important one is *what* gets connected: naive interpolation joins the two noisy observations that happen to sit at the gap's edges; the smoother joins noise-filtered *level estimates*, each already an average over many surrounding years. And the deeper advantages don't show in the point-accuracy number at all: the model reports **uncertainty inside the gap** (the state variance visibly inflates where data is absent — linear interpolation is silently overconfident); the parameters came out close to the full-data values because the likelihood correctly *knew* those years were absent rather than being fed invented values masquerading as evidence; and the same mechanism scales unchanged to seasonal and multivariate settings, where straight-line imputation becomes actively destructive.
 
@@ -268,7 +268,7 @@ SARIMAX airline                 43.19        -57.49            True
 LocalLinearTrend (no seasonal) 100.68          0.00              -
 ```
 
-> **[FIGURE 11 — notebook cell 67]** The two-year holdout in thick black, with all three seasonal forecasts dashed: everyone locks onto the seasonal shape; everyone undershoots the strongest summer peaks; the structural model rides highest and closest, ETS a shade below, SARIMAX consistently a notch low.
+> **[FIGURE 11 — graphs/graph10-11.png — notebook cell 67]** The two-year holdout in thick black, with all three seasonal forecasts dashed: everyone locks onto the seasonal shape; everyone undershoots the strongest summer peaks; the structural model rides highest and closest, ETS a shade below, SARIMAX consistently a notch low.
 
 All three seasonal models demolish the baseline — cutting its error by 55–70% — which quantifies what the eye already knew: on this series, *seasonality is most of the forecastable signal*. Among the three, the structural model leads, ETS follows a few passengers behind, and SARIMAX trails while remaining entirely respectable; its double differencing anchors the forecast to the most recent observed level, and a holdout that keeps accelerating steadily pulls away from that anchor.
 
