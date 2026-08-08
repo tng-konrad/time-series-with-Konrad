@@ -32,6 +32,7 @@ The *structure* matters as much as the content. This is **panel data**: at every
 
 > **[FIGURE 1 — graphs/graph08-01.png — notebook cell 20]** Two stacked panels. Top: total daily sales across all 50 items, 2013–2017, with a dashed green line marking the hold-out boundary near the end of 2017. Bottom: three individual items (1, 15, 28) plotted over the same span.
 
+
 Three features jump out of the top panel, each with a consequence for validation. First, an **upward trend** — 2017 runs visibly higher than 2013. The mean changes over time, which is the textbook definition of **non-stationarity** (episode 3 veterans will remember the Dickey–Fuller ritual). A model trained on early years faces a future sitting at levels it has never seen — so "how hard is the future?" genuinely depends on *which* future, something a scheme that scrambles time can never respect. Second, a **strong yearly cycle**: summer peaks, winter troughs, meaning performance depends on *where in the calendar* a validation block happens to fall — a first hint of why a single train/test path can mislead. Third, the fine weekly sawtooth. And in the bottom panel: three items at different levels, all dancing to the same rhythm. That's the contemporaneous correlation, visible to the naked eye.
 
 ↪ *The machinery behind "non-stationarity" — ADF, KPSS, differencing, the whole Dickey–Fuller ritual — got its thorough treatment in the ARIMA episode, and it's the prerequisite for seeing why this data leaks.* → **<LINK TO EPISODE 3 HERE>**
@@ -143,6 +144,8 @@ Days appearing in BOTH train and validation (per fold):
 ```
 
 Every fold slices exactly one day in half — some of that day's items in training, the rest in validation.
+
+SFSG 
 
 ## GroupTimeSeriesSplit: a day is never cut in two
 
