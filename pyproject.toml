@@ -27,6 +27,7 @@ dependencies = [
     "statsmodels>=0.14.6",
     "tensorflow>=2.21.0",
     "timesfm>=2.0.2",
+    "tirex-2>=0.2.1",
     "tirex-ts>=1.4.2",
     "torch>=2.12.1",
     "utilsforecast>=0.2.15",
