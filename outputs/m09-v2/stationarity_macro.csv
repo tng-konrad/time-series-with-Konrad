@@ -1,0 +1,13 @@
+representation,series,deterministic,ADF p,ADF lags,ADF rejects unit root,KPSS p,KPSS bound,KPSS lags,KPSS rejects stationarity
+log levels,log_gdp,c,0.3827723399149286,2,False,0.01,<= 0.01,9,True
+log levels,log_gdp,ct,0.3887635443995501,2,False,0.013241688353290969,interior,9,True
+log levels,log_cons,c,0.45968355079222395,3,False,0.01,<= 0.01,9,True
+log levels,log_cons,ct,0.30864470405676137,3,False,0.01,<= 0.01,9,True
+log levels,log_inv,c,0.5693619262842092,1,False,0.01,<= 0.01,9,True
+log levels,log_inv,ct,0.12403528531858632,3,False,0.1,>= 0.10,8,False
+quarterly growth,g_gdp,c,8.5750958448986e-10,1,True,0.1,>= 0.10,6,False
+quarterly growth,g_gdp,ct,5.3550735303648805e-09,1,True,0.1,>= 0.10,6,False
+quarterly growth,g_cons,c,2.3019647890441066e-05,2,True,0.1,>= 0.10,7,False
+quarterly growth,g_cons,ct,8.277323030314772e-05,2,True,0.1,>= 0.10,7,False
+quarterly growth,g_inv,c,1.1186580162368626e-22,0,True,0.1,>= 0.10,4,False
+quarterly growth,g_inv,ct,1.4864918986800736e-19,0,True,0.1,>= 0.10,4,False

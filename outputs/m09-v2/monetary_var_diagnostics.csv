@@ -1,0 +1,3 @@
+,model,VAR_lags,test_horizon,stable,whiteness_p,reject_no_autocorrelation
+0,Monetary VAR,6,8,True,0.000158959244199548,True
+1,Monetary VAR,6,12,True,0.002377591336670071,True

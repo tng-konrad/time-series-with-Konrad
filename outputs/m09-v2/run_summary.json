@@ -1,0 +1,35 @@
+{
+  "python": "3.12.8",
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scipy": "1.15.3",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.11.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0"
+  },
+  "dataset": "statsmodels bundled macrodata, historical 2009 extract",
+  "forecast_design": "one origin; horizons 1\u201320; training-only BIC lag selection",
+  "forecast_lag": 1,
+  "growth_VAR_diagnostics_pass": false,
+  "granger_Holm_rejections_conditional": 2,
+  "johansen_selected_rank": 1,
+  "johansen_grid_ranks": [
+    0,
+    1
+  ],
+  "VECM_deterministic": "co",
+  "TY_primary_base_lag": 6,
+  "TY_primary_Holm_rejections": 0,
+  "monetary_VAR_diagnostics_pass": false,
+  "causal_policy_effect_identified": false,
+  "numerical_checks": [
+    "TY vs equation OLS",
+    "TY column-order invariance",
+    "Johansen/VECM beta match when rank 1",
+    "FEVD sums",
+    "IRF common-shock normalization",
+    "forecast alignment"
+  ]
+}

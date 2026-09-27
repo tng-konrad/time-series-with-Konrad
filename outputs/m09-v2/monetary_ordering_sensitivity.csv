@@ -1,0 +1,154 @@
+ordering,response,quarter,value
+Rate last (baseline),g_gdp,0,0.0
+Rate last (baseline),g_gdp,1,0.03543450427509642
+Rate last (baseline),g_gdp,2,-0.03384743181085034
+Rate last (baseline),g_gdp,3,-0.029715873043920975
+Rate last (baseline),g_gdp,4,0.0070757085271668
+Rate last (baseline),g_gdp,5,-0.047117075717659475
+Rate last (baseline),g_gdp,6,-0.01501639483133316
+Rate last (baseline),g_gdp,7,-0.0023077853636849998
+Rate last (baseline),g_gdp,8,-0.009434054013089627
+Rate last (baseline),g_gdp,9,0.005252849044773264
+Rate last (baseline),g_gdp,10,0.005222941201258747
+Rate last (baseline),g_gdp,11,0.004047713098994403
+Rate last (baseline),g_gdp,12,0.015298567057959454
+Rate last (baseline),g_gdp,13,0.012515917300360361
+Rate last (baseline),g_gdp,14,0.01020527210342043
+Rate last (baseline),g_gdp,15,0.012671101992059626
+Rate last (baseline),g_gdp,16,0.010235314613638654
+Rate last (baseline),infl,0,0.0
+Rate last (baseline),infl,1,0.14463646487193715
+Rate last (baseline),infl,2,0.03485103977033491
+Rate last (baseline),infl,3,0.0536546256576325
+Rate last (baseline),infl,4,0.07657896069967429
+Rate last (baseline),infl,5,0.014759468561268212
+Rate last (baseline),infl,6,0.015148508408569634
+Rate last (baseline),infl,7,0.034551593015802955
+Rate last (baseline),infl,8,-0.03916492592571348
+Rate last (baseline),infl,9,-0.031138748680862877
+Rate last (baseline),infl,10,-0.01787102104749208
+Rate last (baseline),infl,11,-0.06529785897231108
+Rate last (baseline),infl,12,-0.046658635153377474
+Rate last (baseline),infl,13,-0.04653466893971607
+Rate last (baseline),infl,14,-0.06073085104454672
+Rate last (baseline),infl,15,-0.04579920223994543
+Rate last (baseline),infl,16,-0.04838545152975194
+Rate last (baseline),tbilrate,0,0.25
+Rate last (baseline),tbilrate,1,0.25297987596731775
+Rate last (baseline),tbilrate,2,0.16360689957333774
+Rate last (baseline),tbilrate,3,0.1960848614772558
+Rate last (baseline),tbilrate,4,0.17792976432369598
+Rate last (baseline),tbilrate,5,0.1730439337745271
+Rate last (baseline),tbilrate,6,0.16704827176981885
+Rate last (baseline),tbilrate,7,0.1164425807884276
+Rate last (baseline),tbilrate,8,0.09906690284504595
+Rate last (baseline),tbilrate,9,0.09602063003526225
+Rate last (baseline),tbilrate,10,0.07231123246164045
+Rate last (baseline),tbilrate,11,0.05788715625434363
+Rate last (baseline),tbilrate,12,0.04573218710515139
+Rate last (baseline),tbilrate,13,0.03621869770239779
+Rate last (baseline),tbilrate,14,0.030538878130640965
+Rate last (baseline),tbilrate,15,0.021208740209759755
+Rate last (baseline),tbilrate,16,0.015368047114709559
+Rate first,g_gdp,0,0.08458435012206474
+Rate first,g_gdp,1,0.0561242684658406
+Rate first,g_gdp,2,-0.012371247120219194
+Rate first,g_gdp,3,-0.03621112260618027
+Rate first,g_gdp,4,0.0019685632887439875
+Rate first,g_gdp,5,-0.05509628668155377
+Rate first,g_gdp,6,-0.018297166818026494
+Rate first,g_gdp,7,-0.013139070318095173
+Rate first,g_gdp,8,-0.023002190690054703
+Rate first,g_gdp,9,-0.00855238237302649
+Rate first,g_gdp,10,-0.0057171872055758926
+Rate first,g_gdp,11,-0.008246682103803466
+Rate first,g_gdp,12,0.0065772055543151416
+Rate first,g_gdp,13,0.0074250997666767205
+Rate first,g_gdp,14,0.0037429362190390873
+Rate first,g_gdp,15,0.008614244571208934
+Rate first,g_gdp,16,0.007083563162665837
+Rate first,infl,0,0.24968867175767048
+Rate first,infl,1,0.23500377155186886
+Rate first,infl,2,0.08497249609747484
+Rate first,infl,3,0.18125532931196767
+Rate first,infl,4,0.15035171308876655
+Rate first,infl,5,0.11524323747144123
+Rate first,infl,6,0.16490974810373799
+Rate first,infl,7,0.1410199564377239
+Rate first,infl,8,0.06541203340786692
+Rate first,infl,9,0.06453055410241769
+Rate first,infl,10,0.06338364967195009
+Rate first,infl,11,0.013321873477792326
+Rate first,infl,12,0.02979139539904919
+Rate first,infl,13,0.017976167204584666
+Rate first,infl,14,-0.006280805408864002
+Rate first,infl,15,0.002825385315236512
+Rate first,infl,16,-0.005001181331115213
+Rate first,tbilrate,0,0.24999999999999997
+Rate first,tbilrate,1,0.26285812166236383
+Rate first,tbilrate,2,0.19838637997521158
+Rate first,tbilrate,3,0.24534182325646547
+Rate first,tbilrate,4,0.22431723932268507
+Rate first,tbilrate,5,0.225932798428668
+Rate first,tbilrate,6,0.2411793218836009
+Rate first,tbilrate,7,0.19536410158137227
+Rate first,tbilrate,8,0.1718556900762241
+Rate first,tbilrate,9,0.17283071935831432
+Rate first,tbilrate,10,0.14603208834142772
+Rate first,tbilrate,11,0.12960913923218262
+Rate first,tbilrate,12,0.12025046791513787
+Rate first,tbilrate,13,0.10502865708040737
+Rate first,tbilrate,14,0.09647012993938024
+Rate first,tbilrate,15,0.08668456794422424
+Rate first,tbilrate,16,0.07600028336434854
+Inflation first,g_gdp,0,0.0
+Inflation first,g_gdp,1,0.0354345042750965
+Inflation first,g_gdp,2,-0.03384743181085032
+Inflation first,g_gdp,3,-0.029715873043920957
+Inflation first,g_gdp,4,0.007075708527166772
+Inflation first,g_gdp,5,-0.04711707571765952
+Inflation first,g_gdp,6,-0.015016394831333211
+Inflation first,g_gdp,7,-0.0023077853636850653
+Inflation first,g_gdp,8,-0.00943405401308974
+Inflation first,g_gdp,9,0.005252849044773148
+Inflation first,g_gdp,10,0.0052229412012586105
+Inflation first,g_gdp,11,0.004047713098994263
+Inflation first,g_gdp,12,0.015298567057959355
+Inflation first,g_gdp,13,0.012515917300360226
+Inflation first,g_gdp,14,0.010205272103420305
+Inflation first,g_gdp,15,0.01267110199205953
+Inflation first,g_gdp,16,0.010235314613638559
+Inflation first,infl,0,0.0
+Inflation first,infl,1,0.1446364648719374
+Inflation first,infl,2,0.03485103977033518
+Inflation first,infl,3,0.05365462565763253
+Inflation first,infl,4,0.07657896069967444
+Inflation first,infl,5,0.014759468561268715
+Inflation first,infl,6,0.015148508408570132
+Inflation first,infl,7,0.034551593015803406
+Inflation first,infl,8,-0.039164925925712975
+Inflation first,infl,9,-0.03113874868086238
+Inflation first,infl,10,-0.01787102104749153
+Inflation first,infl,11,-0.0652978589723105
+Inflation first,infl,12,-0.046658635153376996
+Inflation first,infl,13,-0.04653466893971562
+Inflation first,infl,14,-0.06073085104454632
+Inflation first,infl,15,-0.04579920223994509
+Inflation first,infl,16,-0.04838545152975169
+Inflation first,tbilrate,0,0.24999999999999997
+Inflation first,tbilrate,1,0.2529798759673179
+Inflation first,tbilrate,2,0.16360689957333788
+Inflation first,tbilrate,3,0.19608486147725596
+Inflation first,tbilrate,4,0.17792976432369625
+Inflation first,tbilrate,5,0.17304393377452756
+Inflation first,tbilrate,6,0.16704827176981943
+Inflation first,tbilrate,7,0.11644258078842822
+Inflation first,tbilrate,8,0.09906690284504664
+Inflation first,tbilrate,9,0.09602063003526304
+Inflation first,tbilrate,10,0.07231123246164127
+Inflation first,tbilrate,11,0.05788715625434444
+Inflation first,tbilrate,12,0.04573218710515217
+Inflation first,tbilrate,13,0.036218697702398564
+Inflation first,tbilrate,14,0.030538878130641718
+Inflation first,tbilrate,15,0.02120874020976044
+Inflation first,tbilrate,16,0.01536804711471018

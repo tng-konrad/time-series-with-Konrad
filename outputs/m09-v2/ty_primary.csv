@@ -1,0 +1,3 @@
+,base_lags,augmented_lags,cause,effect,wald,df,p,reject_unadjusted,p_holm,reject_holm
+0,6,7,log_m1,log_gdp,7.746192744589091,6,0.2572938337356126,False,0.2572938337356126,False
+1,6,7,log_gdp,log_m1,13.759292728861078,6,0.03244367201837897,True,0.06488734403675794,False

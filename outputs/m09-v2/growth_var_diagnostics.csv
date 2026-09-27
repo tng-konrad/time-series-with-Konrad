@@ -1,0 +1,3 @@
+,model,VAR_lags,test_horizon,stable,whiteness_p,reject_no_autocorrelation
+0,Growth VAR,1,8,True,0.025243142597041166,True
+1,Growth VAR,1,12,True,0.04285577670653669,True

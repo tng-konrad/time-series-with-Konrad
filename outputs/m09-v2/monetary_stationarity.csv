@@ -1,0 +1,7 @@
+series,deterministic,ADF p,ADF lags,ADF rejects unit root,KPSS p,KPSS bound,KPSS lags,KPSS rejects stationarity
+g_gdp,c,8.5750958448986e-10,1,True,0.1,>= 0.10,6,False
+g_gdp,ct,5.3550735303648805e-09,1,True,0.1,>= 0.10,6,False
+infl,c,0.027046149890514827,2,True,0.08076383882604253,interior,9,False
+infl,ct,0.08215835145652323,2,False,0.01,<= 0.01,9,True
+tbilrate,c,0.2804704974253062,7,False,0.0537631821801809,interior,9,False
+tbilrate,ct,0.4461768593667884,7,False,0.01,<= 0.01,9,True

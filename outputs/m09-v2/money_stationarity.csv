@@ -1,0 +1,9 @@
+representation,series,deterministic,ADF p,ADF lags,ADF rejects unit root,KPSS p,KPSS bound,KPSS lags,KPSS rejects stationarity
+levels,log_m1,c,0.8238872916189088,8,False,0.01,<= 0.01,9,True
+levels,log_m1,ct,0.7194235123373556,5,False,0.01,<= 0.01,9,True
+levels,log_gdp,c,0.3827723399149286,2,False,0.01,<= 0.01,9,True
+levels,log_gdp,ct,0.3887635443995501,2,False,0.013241688353290969,interior,9,True
+first differences,log_m1,c,0.0022964162084422968,7,True,0.1,>= 0.10,8,False
+first differences,log_m1,ct,0.012175375884366983,7,True,0.024359913045990854,interior,8,True
+first differences,log_gdp,c,8.575095844895881e-10,1,True,0.1,>= 0.10,6,False
+first differences,log_gdp,ct,5.355073530389742e-09,1,True,0.1,>= 0.10,6,False
