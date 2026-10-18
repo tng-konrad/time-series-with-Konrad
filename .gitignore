@@ -6,3 +6,5 @@ dumpsterx/claude-notebook-causal-methods-for-time-series.ipynb
 .gitignore
 printouts/
 .gitignore
+graphs/.DS_Store
+m16-post.md
