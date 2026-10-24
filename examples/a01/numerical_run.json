@@ -1,0 +1,6433 @@
+{
+  "manifest": {
+    "attribution": "Australian Bureau of Statistics, Retail Trade, Australia, June 2025, Table 11",
+    "csv_sha256": "6822dd47bdbad769feb6238a7044d4474033bc970690034c4dd9d3bad2999c21",
+    "end": "2025-06-01",
+    "extraction": "python scripts/prepare_a01_data.py /path/to/8501011.xlsx",
+    "frequency": "MS",
+    "license_url": "https://www.abs.gov.au/website-privacy-copyright-and-disclaimer",
+    "observations_per_series": 306,
+    "release_date": "2025-07-31",
+    "retrieved_on": "2026-10-22",
+    "rows": 4896,
+    "series": [
+      {
+        "industry": "Supermarket and grocery stores",
+        "series_id": "A3349335T",
+        "state": "New South Wales"
+      },
+      {
+        "industry": "Clothing retailing",
+        "series_id": "A3349399C",
+        "state": "New South Wales"
+      },
+      {
+        "industry": "Hardware, building and garden supplies retailing",
+        "series_id": "A3349337W",
+        "state": "New South Wales"
+      },
+      {
+        "industry": "Cafes, restaurants and catering services",
+        "series_id": "A3349709X",
+        "state": "New South Wales"
+      },
+      {
+        "industry": "Supermarket and grocery stores",
+        "series_id": "A3349565X",
+        "state": "Victoria"
+      },
+      {
+        "industry": "Clothing retailing",
+        "series_id": "A3349483V",
+        "state": "Victoria"
+      },
+      {
+        "industry": "Hardware, building and garden supplies retailing",
+        "series_id": "A3349416V",
+        "state": "Victoria"
+      },
+      {
+        "industry": "Cafes, restaurants and catering services",
+        "series_id": "A3349640L",
+        "state": "Victoria"
+      },
+      {
+        "industry": "Supermarket and grocery stores",
+        "series_id": "A3349882C",
+        "state": "Queensland"
+      },
+      {
+        "industry": "Clothing retailing",
+        "series_id": "A3349477X",
+        "state": "Queensland"
+      },
+      {
+        "industry": "Hardware, building and garden supplies retailing",
+        "series_id": "A3349479C",
+        "state": "Queensland"
+      },
+      {
+        "industry": "Cafes, restaurants and catering services",
+        "series_id": "A3349481R",
+        "state": "Queensland"
+      },
+      {
+        "industry": "Supermarket and grocery stores",
+        "series_id": "A3349744F",
+        "state": "Western Australia"
+      },
+      {
+        "industry": "Clothing retailing",
+        "series_id": "A3349507A",
+        "state": "Western Australia"
+      },
+      {
+        "industry": "Hardware, building and garden supplies retailing",
+        "series_id": "A3349909T",
+        "state": "Western Australia"
+      },
+      {
+        "industry": "Cafes, restaurants and catering services",
+        "series_id": "A3349910A",
+        "state": "Western Australia"
+      }
+    ],
+    "series_type": "Original",
+    "source_sha256": "13853143285f65c1d368c51b81e9bf83aab1d9613dac1c091e0dd38e6c64ae5c",
+    "source_sheet": "Data1",
+    "source_table": 11,
+    "source_url": "https://www.abs.gov.au/statistics/industry/retail-and-wholesale-trade/retail-trade-australia/jun-2025/8501011.xlsx",
+    "start": "2000-01-01",
+    "units": "nominal AUD millions",
+    "vintage_note": "One June 2025 release; not a real-time vintage backtest."
+  },
+  "numerical_seconds": 7.764886207995005,
+  "optimizer": {
+    "maxiter": 2000,
+    "method": "L-BFGS-B",
+    "use_brute": true
+  },
+  "portfolio": {
+    "delivered_model_counts": {
+      "hw_add": 1,
+      "hw_add_damped": 1,
+      "hw_mul": 9,
+      "hw_mul_damped": 4,
+      "seasonal_naive": 1
+    },
+    "fallback_count": 0,
+    "final_comparison": {
+      "baseline_macro_mase": 0.8063839633715423,
+      "delivered_macro_mase": 0.5301732997233599,
+      "direction": "lower",
+      "losses": 5,
+      "ties": 1,
+      "wins": 10
+    },
+    "review_series": [
+      "A3349479C",
+      "A3349399C",
+      "A3349477X"
+    ],
+    "selected_model_counts": {
+      "hw_add": 1,
+      "hw_add_damped": 1,
+      "hw_mul": 9,
+      "hw_mul_damped": 4,
+      "seasonal_naive": 1
+    }
+  },
+  "rows": [
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 100.39507810015213,
+                "mase": 0.995063969856099,
+                "rmse": 116.86092238635682,
+                "scale": 100.89308943089432
+              },
+              "scale": 100.89308943089432,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 148.04917180207133,
+                "mase": 1.4624155812432529,
+                "rmse": 163.6046869376959,
+                "scale": 101.23604651162792
+              },
+              "scale": 101.23604651162792,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 31.78218001445805,
+                "mase": 0.29866727240751206,
+                "rmse": 40.3496189939682,
+                "scale": 106.41333333333333
+              },
+              "scale": 106.41333333333333,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 106.9384094393403
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 111.56216422069667,
+                "mase": 1.105746338525098,
+                "rmse": 127.1655379140605,
+                "scale": 100.89308943089432
+              },
+              "scale": 100.89308943089432,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 167.12221288673572,
+                "mase": 1.6508172597152948,
+                "rmse": 183.41153067487863,
+                "scale": 101.23604651162792
+              },
+              "scale": 101.23604651162792,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 29.996900277354978,
+                "mase": 0.28189042987114693,
+                "rmse": 40.22246375919171,
+                "scale": 106.41333333333333
+              },
+              "scale": 106.41333333333333,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 116.93317744937696
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 92.18835870204668,
+                "mase": 0.9137232215016089,
+                "rmse": 108.89630386672692,
+                "scale": 100.89308943089432
+              },
+              "scale": 100.89308943089432,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 133.28584031027435,
+                "mase": 1.3165848025778566,
+                "rmse": 146.94410225579034,
+                "scale": 101.23604651162792
+              },
+              "scale": 101.23604651162792,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 38.588228045479205,
+                "mase": 0.36262587437801536,
+                "rmse": 45.55970781609836,
+                "scale": 106.41333333333333
+              },
+              "scale": 106.41333333333333,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 100.4667046462052
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 97.94839072559967,
+                "mase": 0.9708136729492103,
+                "rmse": 116.46700890545232,
+                "scale": 100.89308943089432
+              },
+              "scale": 100.89308943089432,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 148.2023095700937,
+                "mase": 1.4639282614920295,
+                "rmse": 163.2196181932086,
+                "scale": 101.23604651162792
+              },
+              "scale": 101.23604651162792,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 40.74373935983041,
+                "mase": 0.3828819010133167,
+                "rmse": 47.703835293372975,
+                "scale": 106.41333333333333
+              },
+              "scale": 106.41333333333333,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 109.13015413067797
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 108.26666666666654,
+                "mase": 1.073083075137893,
+                "rmse": 120.17171048129413,
+                "scale": 100.89308943089432
+              },
+              "scale": 100.89308943089432,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 217.725,
+                "mase": 2.1506667585541503,
+                "rmse": 249.7228814105748,
+                "scale": 101.23604651162792
+              },
+              "scale": 101.23604651162792,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 144.4666666666666,
+                "mase": 1.3575992983335416,
+                "rmse": 155.4290620615505,
+                "scale": 106.41333333333333
+              },
+              "scale": 106.41333333333333,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 175.10788465113978
+        }
+      },
+      "delivery": {
+        "baseline": [
+          3433.2,
+          3462.1,
+          3449.1,
+          3567.0,
+          3542.8,
+          3988.9,
+          3571.7,
+          3405.9,
+          3677.2,
+          3458.7,
+          3532.5,
+          3425.0
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            3433.2,
+            3462.1,
+            3449.1,
+            3567.0,
+            3542.8,
+            3988.9,
+            3571.7,
+            3405.9,
+            3677.2,
+            3458.7,
+            3532.5,
+            3425.0
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.837502148002386e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          3552.1716541598184,
+          3615.759711406498,
+          3540.1861328570317,
+          3720.674619150535,
+          3683.663161176768,
+          4127.018166713939,
+          3743.291461633465,
+          3429.7549948842125,
+          3796.6294298102785,
+          3583.356265133373,
+          3642.6988341646347,
+          3507.3445021171815
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            3552.1716541598184,
+            3615.759711406498,
+            3540.1861328570317,
+            3720.674619150535,
+            3683.663161176768,
+            4127.018166713939,
+            3743.291461633465,
+            3429.7549948842125,
+            3796.6294298102785,
+            3583.356265133373,
+            3642.6988341646347,
+            3507.3445021171815
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03688791597960517,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 89.8916666666667,
+          "mase": 0.8320788965770785,
+          "rmse": 96.94938971786603,
+          "scale": 108.03262411347517
+        },
+        "delivered": {
+          "mae": 34.79504218003137,
+          "mase": 0.3220790244202844,
+          "rmse": 47.01078885530829,
+          "scale": 108.03262411347517
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Supermarket and grocery stores",
+      "series_id": "A3349335T",
+      "state": "New South Wales"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 151.00302542055988,
+                "mase": 4.875860635749521,
+                "rmse": 178.2161485241564,
+                "scale": 30.969512195121954
+              },
+              "scale": 30.969512195121954,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 35.28199526565917,
+                "mase": 0.9922989053720612,
+                "rmse": 44.96713910995146,
+                "scale": 35.55581395348837
+              },
+              "scale": 35.55581395348837,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 27.976201459710143,
+                "mase": 0.6895911330529171,
+                "rmse": 31.258993703897158,
+                "scale": 40.56925925925926
+              },
+              "scale": 40.56925925925926,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 84.81409377933501
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 156.29600329944148,
+                "mase": 5.0467699431203785,
+                "rmse": 180.53396145029942,
+                "scale": 30.969512195121954
+              },
+              "scale": 30.969512195121954,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 37.9987501800064,
+                "mase": 1.0687070820460953,
+                "rmse": 47.978839768515954,
+                "scale": 35.55581395348837
+              },
+              "scale": 35.55581395348837,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 31.070984484098243,
+                "mase": 0.7658750751532838,
+                "rmse": 34.483549496486674,
+                "scale": 40.56925925925926
+              },
+              "scale": 40.56925925925926,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 87.665450238434
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 134.78259025369618,
+                "mase": 4.352105690412714,
+                "rmse": 179.51873322793128,
+                "scale": 30.969512195121954
+              },
+              "scale": 30.969512195121954,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 24.93165944394273,
+                "mase": 0.7011978259464566,
+                "rmse": 32.99161478972694,
+                "scale": 35.55581395348837
+              },
+              "scale": 35.55581395348837,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 34.869601389258015,
+                "mase": 0.859507963071808,
+                "rmse": 44.158438260203475,
+                "scale": 40.56925925925926
+              },
+              "scale": 40.56925925925926,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 85.55626209262056
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 137.6359070645224,
+                "mase": 4.444238779008008,
+                "rmse": 180.01821150614927,
+                "scale": 30.969512195121954
+              },
+              "scale": 30.969512195121954,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 23.13290554381902,
+                "mase": 0.6506082401623507,
+                "rmse": 29.366530591539654,
+                "scale": 35.55581395348837
+              },
+              "scale": 35.55581395348837,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 33.50099845473208,
+                "mase": 0.8257729883763167,
+                "rmse": 43.100165835843676,
+                "scale": 40.56925925925926
+              },
+              "scale": 40.56925925925926,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 84.1616359778442
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 129.57500000000002,
+                "mase": 4.183953534160268,
+                "rmse": 156.0133888485216,
+                "scale": 30.969512195121954
+              },
+              "scale": 30.969512195121954,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 148.35833333333332,
+                "mase": 4.1725478012514445,
+                "rmse": 214.82849554935675,
+                "scale": 35.55581395348837
+              },
+              "scale": 35.55581395348837,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.59166666666668,
+                "mase": 0.5322174242493407,
+                "rmse": 30.646981906869723,
+                "scale": 40.56925925925926
+              },
+              "scale": 40.56925925925926,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 133.8296221015827
+        }
+      },
+      "delivery": {
+        "baseline": [
+          720.6,
+          710.9,
+          771.8,
+          766.3,
+          906.1,
+          1093.3,
+          705.2,
+          673.0,
+          716.9,
+          774.2,
+          837.5,
+          802.4
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            720.6,
+            710.9,
+            771.8,
+            766.3,
+            906.1,
+            1093.3,
+            705.2,
+            673.0,
+            716.9,
+            774.2,
+            837.5,
+            802.4
+          ],
+          "model": "seasonal_naive",
+          "seconds": 0.00010462501086294651,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul_damped",
+        "fallback_reason": null,
+        "forecast": [
+          714.3683618306382,
+          682.5781366043443,
+          734.0468323552041,
+          780.2616081327037,
+          872.4090426188508,
+          1189.366637703531,
+          744.9958543433825,
+          625.2401376388947,
+          731.1442322109649,
+          768.9586231202074,
+          837.9571198120542,
+          816.522775841305
+        ],
+        "selected": "hw_mul_damped",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            714.3683618306382,
+            682.5781366043443,
+            734.0468323552041,
+            780.2616081327037,
+            872.4090426188508,
+            1189.366637703531,
+            744.9958543433825,
+            625.2401376388947,
+            731.1442322109649,
+            768.9586231202074,
+            837.9571198120542,
+            816.522775841305
+          ],
+          "model": "hw_mul_damped",
+          "seconds": 0.03847508295439184,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 28.083333333333332,
+          "mase": 0.706291024543379,
+          "rmse": 33.470285328930196,
+          "scale": 39.761702127659575
+        },
+        "delivered": {
+          "mae": 34.890326099581785,
+          "mase": 0.8774857270335744,
+          "rmse": 42.92239636219706,
+          "scale": 39.761702127659575
+        },
+        "mae_direction": "higher"
+      },
+      "industry": "Clothing retailing",
+      "series_id": "A3349399C",
+      "state": "New South Wales"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 46.95201363703395,
+                "mase": 1.5848672239510349,
+                "rmse": 59.19136293698753,
+                "scale": 29.62520325203252
+              },
+              "scale": 29.62520325203252,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 48.03381522149896,
+                "mase": 1.5835121359485225,
+                "rmse": 53.30584039541004,
+                "scale": 30.33372093023256
+              },
+              "scale": 30.33372093023256,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 24.319915910880365,
+                "mase": 0.7951053212977778,
+                "rmse": 27.270677830620563,
+                "scale": 30.58703703703704
+              },
+              "scale": 30.58703703703704,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 46.589293721006044
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 53.04297997851395,
+                "mase": 1.7904680527339432,
+                "rmse": 64.23818572727319,
+                "scale": 29.62520325203252
+              },
+              "scale": 29.62520325203252,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 42.53827165381509,
+                "mase": 1.402342684949629,
+                "rmse": 46.982497931388586,
+                "scale": 30.33372093023256
+              },
+              "scale": 30.33372093023256,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 24.770633311513638,
+                "mase": 0.8098408904896388,
+                "rmse": 27.44085370240718,
+                "scale": 30.58703703703704
+              },
+              "scale": 30.58703703703704,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 46.22051245368965
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 24.329351804505773,
+                "mase": 0.8212383083932627,
+                "rmse": 33.62097388862326,
+                "scale": 29.62520325203252
+              },
+              "scale": 29.62520325203252,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 59.44667351242294,
+                "mase": 1.9597554038672031,
+                "rmse": 65.29888043202398,
+                "scale": 30.33372093023256
+              },
+              "scale": 30.33372093023256,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 17.793889592261355,
+                "mase": 0.5817461027923431,
+                "rmse": 22.18786738647594,
+                "scale": 30.58703703703704
+              },
+              "scale": 30.58703703703704,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 40.36924056904106
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 27.784044576113093,
+                "mase": 0.9378516103246276,
+                "rmse": 37.31227973129524,
+                "scale": 29.62520325203252
+              },
+              "scale": 29.62520325203252,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 53.82150478884327,
+                "mase": 1.7743126506844487,
+                "rmse": 58.85512018414922,
+                "scale": 30.33372093023256
+              },
+              "scale": 30.33372093023256,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 15.167776993329227,
+                "mase": 0.49588905832764923,
+                "rmse": 18.56268729355071,
+                "scale": 30.58703703703704
+              },
+              "scale": 30.58703703703704,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 38.24336240299839
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 44.85833333333334,
+                "mase": 1.5141949559537862,
+                "rmse": 51.71191835544298,
+                "scale": 29.62520325203252
+              },
+              "scale": 29.62520325203252,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 36.033333333333324,
+                "mase": 1.1878969090607068,
+                "rmse": 43.89485543128412,
+                "scale": 30.33372093023256
+              },
+              "scale": 30.33372093023256,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.941666666666674,
+                "mase": 0.6519646424895564,
+                "rmse": 26.223001989347708,
+                "scale": 30.58703703703704
+              },
+              "scale": 30.58703703703704,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 40.609925258691604
+        }
+      },
+      "delivery": {
+        "baseline": [
+          595.1,
+          640.8,
+          690.4,
+          701.3,
+          687.9,
+          702.2,
+          602.2,
+          570.9,
+          597.8,
+          586.6,
+          578.2,
+          551.8
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            595.1,
+            640.8,
+            690.4,
+            701.3,
+            687.9,
+            702.2,
+            602.2,
+            570.9,
+            597.8,
+            586.6,
+            578.2,
+            551.8
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.854200132191181e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul_damped",
+        "fallback_reason": null,
+        "forecast": [
+          555.5279552395012,
+          600.4034235959751,
+          649.3947612759771,
+          682.067420565715,
+          667.5564694544945,
+          677.3240793940065,
+          578.51688187781,
+          548.0067088503853,
+          590.581302564767,
+          568.3512007152281,
+          584.7563294403362,
+          557.8777560055557
+        ],
+        "selected": "hw_mul_damped",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            555.5279552395012,
+            600.4034235959751,
+            649.3947612759771,
+            682.067420565715,
+            667.5564694544945,
+            677.3240793940065,
+            578.51688187781,
+            548.0067088503853,
+            590.581302564767,
+            568.3512007152281,
+            584.7563294403362,
+            557.8777560055557
+          ],
+          "model": "hw_mul_damped",
+          "seconds": 0.035210374975577,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 13.974999999999985,
+          "mase": 0.4637612087834494,
+          "rmse": 18.193245083455185,
+          "scale": 30.134042553191488
+        },
+        "delivered": {
+          "mae": 24.094642585020676,
+          "mase": 0.7995821517305457,
+          "rmse": 27.023235850230947,
+          "scale": 30.134042553191488
+        },
+        "mae_direction": "higher"
+      },
+      "industry": "Hardware, building and garden supplies retailing",
+      "series_id": "A3349337W",
+      "state": "New South Wales"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 196.59448900145972,
+                "mase": 3.4251123799997942,
+                "rmse": 222.1674504078299,
+                "scale": 57.39796747967479
+              },
+              "scale": 57.39796747967479,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 86.69063856242231,
+                "mase": 1.3736923896071045,
+                "rmse": 98.95186045716916,
+                "scale": 63.107751937984496
+              },
+              "scale": 63.107751937984496,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 47.55469221741219,
+                "mase": 0.6240166649835387,
+                "rmse": 61.896333038152065,
+                "scale": 76.2074074074074
+              },
+              "scale": 76.2074074074074,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 127.67188130105039
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 204.4111969089209,
+                "mase": 3.5612967825264024,
+                "rmse": 230.2612092972549,
+                "scale": 57.39796747967479
+              },
+              "scale": 57.39796747967479,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 99.6721116357009,
+                "mase": 1.5793956934743598,
+                "rmse": 110.46142818293983,
+                "scale": 63.107751937984496
+              },
+              "scale": 63.107751937984496,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 37.991935408868194,
+                "mase": 0.4985333670487176,
+                "rmse": 49.72496978472125,
+                "scale": 76.2074074074074
+              },
+              "scale": 76.2074074074074,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 130.14920242163865
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 190.4966081174755,
+                "mase": 3.3188737595095557,
+                "rmse": 221.377950217735,
+                "scale": 57.39796747967479
+              },
+              "scale": 57.39796747967479,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 51.87518004796442,
+                "mase": 0.8220096336016178,
+                "rmse": 59.199938212683996,
+                "scale": 63.107751937984496
+              },
+              "scale": 63.107751937984496,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 87.48500960704489,
+                "mase": 1.1479856431717594,
+                "rmse": 105.0152842549322,
+                "scale": 76.2074074074074
+              },
+              "scale": 76.2074074074074,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 128.53105756178374
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 194.4032313831834,
+                "mase": 3.386935808345889,
+                "rmse": 225.7238133807664,
+                "scale": 57.39796747967479
+              },
+              "scale": 57.39796747967479,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 63.4632818854063,
+                "mase": 1.0056336969152566,
+                "rmse": 71.05417077817339,
+                "scale": 63.107751937984496
+              },
+              "scale": 63.107751937984496,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 73.01724462136458,
+                "mase": 0.9581384160074086,
+                "rmse": 92.17628952107265,
+                "scale": 76.2074074074074
+              },
+              "scale": 76.2074074074074,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 129.65142456000413
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 180.15833333333333,
+                "mase": 3.1387580648588167,
+                "rmse": 198.08757112280753,
+                "scale": 57.39796747967479
+              },
+              "scale": 57.39796747967479,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 357.8500000000001,
+                "mase": 5.670460268520681,
+                "rmse": 415.1569402045448,
+                "scale": 63.107751937984496
+              },
+              "scale": 63.107751937984496,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 56.10000000000003,
+                "mase": 0.7361489113530331,
+                "rmse": 69.5292024979433,
+                "scale": 76.2074074074074
+              },
+              "scale": 76.2074074074074,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 227.59123794176523
+        }
+      },
+      "delivery": {
+        "baseline": [
+          1076.5,
+          1110.4,
+          1105.0,
+          1150.7,
+          1136.7,
+          1132.3,
+          1006.3,
+          1034.9,
+          1052.8,
+          1057.7,
+          1115.6,
+          1014.9
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            1076.5,
+            1110.4,
+            1105.0,
+            1150.7,
+            1136.7,
+            1132.3,
+            1006.3,
+            1034.9,
+            1052.8,
+            1057.7,
+            1115.6,
+            1014.9
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.295804193243384e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_add",
+        "fallback_reason": null,
+        "forecast": [
+          1033.7517888035281,
+          1043.2495186595634,
+          1057.3049086169656,
+          1084.6722756080283,
+          1094.179072618657,
+          1150.1372418045341,
+          1071.2070227112654,
+          1045.199728162697,
+          1076.3457332829826,
+          1051.89558200913,
+          1067.91179517053,
+          1046.9213332486038
+        ],
+        "selected": "hw_add",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            1033.7517888035281,
+            1043.2495186595634,
+            1057.3049086169656,
+            1084.6722756080283,
+            1094.179072618657,
+            1150.1372418045341,
+            1071.2070227112654,
+            1045.199728162697,
+            1076.3457332829826,
+            1051.89558200913,
+            1067.91179517053,
+            1046.9213332486038
+          ],
+          "model": "hw_add",
+          "seconds": 0.06989566702395678,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 35.150000000000034,
+          "mase": 0.466478738023079,
+          "rmse": 47.465706919136224,
+          "scale": 75.35177304964539
+        },
+        "delivered": {
+          "mae": 41.584551637264106,
+          "mase": 0.5518722380940684,
+          "rmse": 50.896781682638704,
+          "scale": 75.35177304964539
+        },
+        "mae_direction": "higher"
+      },
+      "industry": "Cafes, restaurants and catering services",
+      "series_id": "A3349709X",
+      "state": "New South Wales"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 86.95039014538027,
+                "mase": 1.0018405178222312,
+                "rmse": 108.68391625761636,
+                "scale": 86.79065040650407
+              },
+              "scale": 86.79065040650407,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 118.78578292085933,
+                "mase": 1.361683602229654,
+                "rmse": 137.22182186058197,
+                "scale": 87.23449612403101
+              },
+              "scale": 87.23449612403101,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 40.787744960045075,
+                "mase": 0.4496425843113564,
+                "rmse": 45.67925692963848,
+                "scale": 90.71148148148147
+              },
+              "scale": 90.71148148148147,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 97.19499834927893
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 98.09828593118016,
+                "mase": 1.1302863323608494,
+                "rmse": 116.69582662969813,
+                "scale": 86.79065040650407
+              },
+              "scale": 86.79065040650407,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 135.19673906147582,
+                "mase": 1.5498082188639175,
+                "rmse": 154.06884220541733,
+                "scale": 87.23449612403101
+              },
+              "scale": 87.23449612403101,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 39.311491745251224,
+                "mase": 0.4333684237455274,
+                "rmse": 46.43930742756889,
+                "scale": 90.71148148148147
+              },
+              "scale": 90.71148148148147,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 105.73465875422812
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 79.76606479666145,
+                "mase": 0.9190628762782471,
+                "rmse": 103.28767504699829,
+                "scale": 86.79065040650407
+              },
+              "scale": 86.79065040650407,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 101.55207569107388,
+                "mase": 1.1641274977582947,
+                "rmse": 113.01980480886992,
+                "scale": 87.23449612403101
+              },
+              "scale": 87.23449612403101,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 39.389163939217156,
+                "mase": 0.4342246791246415,
+                "rmse": 44.83918419849943,
+                "scale": 90.71148148148147
+              },
+              "scale": 90.71148148148147,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 87.04888801812255
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 86.21877210730888,
+                "mase": 0.9934108305846694,
+                "rmse": 107.9763004067284,
+                "scale": 86.79065040650407
+              },
+              "scale": 86.79065040650407,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 116.37276743257114,
+                "mase": 1.3340223489926621,
+                "rmse": 128.24567073329433,
+                "scale": 87.23449612403101
+              },
+              "scale": 87.23449612403101,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 38.193441792897865,
+                "mase": 0.4210430826300082,
+                "rmse": 43.230882476378525,
+                "scale": 90.71148148148147
+              },
+              "scale": 90.71148148148147,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 93.1509512054671
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 96.33333333333333,
+                "mase": 1.1099505866373152,
+                "rmse": 110.27096928324636,
+                "scale": 86.79065040650407
+              },
+              "scale": 86.79065040650407,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 165.46666666666655,
+                "mase": 1.8968031457578909,
+                "rmse": 185.8915813048024,
+                "scale": 87.23449612403101
+              },
+              "scale": 87.23449612403101,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 82.78333333333346,
+                "mase": 0.9126003895133548,
+                "rmse": 94.84219349354322,
+                "scale": 90.71148148148147
+              },
+              "scale": 90.71148148148147,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 130.334914693864
+        }
+      },
+      "delivery": {
+        "baseline": [
+          2826.9,
+          2827.1,
+          2793.9,
+          2933.3,
+          2925.7,
+          3272.1,
+          2924.9,
+          2803.9,
+          3066.8,
+          2812.6,
+          2899.2,
+          2796.3
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            2826.9,
+            2827.1,
+            2793.9,
+            2933.3,
+            2925.7,
+            3272.1,
+            2924.9,
+            2803.9,
+            3066.8,
+            2812.6,
+            2899.2,
+            2796.3
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.700002217665315e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          2914.865100713327,
+          2962.328727865706,
+          2896.9324730618287,
+          3057.5856844111936,
+          3031.9805801485495,
+          3391.093541877652,
+          3074.170625995069,
+          2824.0408557949763,
+          3128.3121235942954,
+          2937.354357133718,
+          2993.1318327047056,
+          2861.557359657507
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            2914.865100713327,
+            2962.328727865706,
+            2896.9324730618287,
+            3057.5856844111936,
+            3031.9805801485495,
+            3391.093541877652,
+            3074.170625995069,
+            2824.0408557949763,
+            3128.3121235942954,
+            2937.354357133718,
+            2993.1318327047056,
+            2861.557359657507
+          ],
+          "model": "hw_mul",
+          "seconds": 0.035768583009485155,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 77.74166666666663,
+          "mase": 0.8602205175491942,
+          "rmse": 86.18938933147939,
+          "scale": 90.37411347517731
+        },
+        "delivered": {
+          "mae": 27.45551366388891,
+          "mase": 0.30379842864439277,
+          "rmse": 35.321911862886104,
+          "scale": 90.37411347517731
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Supermarket and grocery stores",
+      "series_id": "A3349565X",
+      "state": "Victoria"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 144.39774273351526,
+                "mase": 4.7366880525442046,
+                "rmse": 154.5295424560998,
+                "scale": 30.484959349593495
+              },
+              "scale": 30.484959349593495,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 35.27798567004904,
+                "mase": 1.0779558598771426,
+                "rmse": 54.9003929452577,
+                "scale": 32.72674418604651
+              },
+              "scale": 32.72674418604651,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 34.01077447670623,
+                "mase": 0.944695140035048,
+                "rmse": 44.839452400752975,
+                "scale": 36.001851851851846
+              },
+              "scale": 36.001851851851846,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 84.75646260070349
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 146.35054864492653,
+                "mase": 4.800746065186341,
+                "rmse": 156.94166791170156,
+                "scale": 30.484959349593495
+              },
+              "scale": 30.484959349593495,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 34.77153288112516,
+                "mase": 1.0624806636264927,
+                "rmse": 53.30099351842843,
+                "scale": 32.72674418604651
+              },
+              "scale": 32.72674418604651,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 32.59927141663734,
+                "mase": 0.905488738490004,
+                "rmse": 42.5740848792823,
+                "scale": 36.001851851851846
+              },
+              "scale": 36.001851851851846,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 84.27224876980411
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 142.6733877693606,
+                "mase": 4.680123930401865,
+                "rmse": 156.47550264672884,
+                "scale": 30.484959349593495
+              },
+              "scale": 30.484959349593495,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 15.897268865293489,
+                "mase": 0.4857577269196092,
+                "rmse": 20.69658498115455,
+                "scale": 32.72674418604651
+              },
+              "scale": 32.72674418604651,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.740660534182748,
+                "mase": 0.6038761734714616,
+                "rmse": 27.194007514212068,
+                "scale": 36.001851851851846
+              },
+              "scale": 36.001851851851846,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 68.12203171403182
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 147.86782876611858,
+                "mase": 4.850517498495216,
+                "rmse": 162.6199415512299,
+                "scale": 30.484959349593495
+              },
+              "scale": 30.484959349593495,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 16.56808389488003,
+                "mase": 0.5062551838549236,
+                "rmse": 20.24075479616296,
+                "scale": 32.72674418604651
+              },
+              "scale": 32.72674418604651,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.547457708967812,
+                "mase": 0.5429570064730528,
+                "rmse": 24.295651102836015,
+                "scale": 36.001851851851846
+              },
+              "scale": 36.001851851851846,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 69.05211581674297
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 78.68333333333334,
+                "mase": 2.5810542317282947,
+                "rmse": 92.94708171857792,
+                "scale": 30.484959349593495
+              },
+              "scale": 30.484959349593495,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 106.41666666666664,
+                "mase": 3.2516728844673413,
+                "rmse": 153.24521743488984,
+                "scale": 32.72674418604651
+              },
+              "scale": 32.72674418604651,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 18.591666666666665,
+                "mase": 0.5164086209557122,
+                "rmse": 25.948330068297906,
+                "scale": 36.001851851851846
+              },
+              "scale": 36.001851851851846,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 90.71354307392188
+        }
+      },
+      "delivery": {
+        "baseline": [
+          512.5,
+          496.9,
+          516.8,
+          500.3,
+          649.5,
+          829.4,
+          524.4,
+          492.7,
+          497.4,
+          571.6,
+          593.1,
+          576.7
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            512.5,
+            496.9,
+            516.8,
+            500.3,
+            649.5,
+            829.4,
+            524.4,
+            492.7,
+            497.4,
+            571.6,
+            593.1,
+            576.7
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.350001346319914e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          527.7214274726948,
+          500.9316076857909,
+          512.9994470875911,
+          553.0835182651234,
+          649.8743282027834,
+          879.8758077132463,
+          543.2645371385972,
+          470.43047396534854,
+          555.3312016615255,
+          594.7558137320183,
+          613.5291472212219,
+          597.7725463403267
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            527.7214274726948,
+            500.9316076857909,
+            512.9994470875911,
+            553.0835182651234,
+            649.8743282027834,
+            879.8758077132463,
+            543.2645371385972,
+            470.43047396534854,
+            555.3312016615255,
+            594.7558137320183,
+            613.5291472212219,
+            597.7725463403267
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03705824998905882,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 34.425000000000004,
+          "mase": 0.9762912828351905,
+          "rmse": 37.64435548657992,
+          "scale": 35.26099290780142
+        },
+        "delivered": {
+          "mae": 17.715222363619848,
+          "mase": 0.5024028225733935,
+          "rmse": 23.158172252943622,
+          "scale": 35.26099290780142
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Clothing retailing",
+      "series_id": "A3349483V",
+      "state": "Victoria"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 25.70081965494219,
+                "mase": 0.9721537072523685,
+                "rmse": 29.39377423991424,
+                "scale": 26.4369918699187
+              },
+              "scale": 26.4369918699187,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.852352828661846,
+                "mase": 0.751012760966973,
+                "rmse": 22.643117811686462,
+                "scale": 26.434108527131784
+              },
+              "scale": 26.434108527131784,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.89482403523696,
+                "mase": 0.5700115501132453,
+                "rmse": 18.688739922989154,
+                "scale": 26.130740740740737
+              },
+              "scale": 26.130740740740737,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 23.57521065819662
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 25.700236876727697,
+                "mase": 0.9721316632082745,
+                "rmse": 29.887054792361265,
+                "scale": 26.4369918699187
+              },
+              "scale": 26.4369918699187,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 16.670202804094306,
+                "mase": 0.6306323054921306,
+                "rmse": 19.376613207953806,
+                "scale": 26.434108527131784
+              },
+              "scale": 26.434108527131784,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.820343947199044,
+                "mase": 0.5671612639779658,
+                "rmse": 19.745569581105517,
+                "scale": 26.130740740740737
+              },
+              "scale": 26.130740740740737,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 23.003079193806865
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 22.573941149420907,
+                "mase": 0.8538770696944019,
+                "rmse": 28.93425223918871,
+                "scale": 26.4369918699187
+              },
+              "scale": 26.4369918699187,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 24.824178472342012,
+                "mase": 0.9390964876633782,
+                "rmse": 30.142688230084865,
+                "scale": 26.434108527131784
+              },
+              "scale": 26.434108527131784,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 18.477297374639466,
+                "mase": 0.7071095901170265,
+                "rmse": 21.407411220875783,
+                "scale": 26.130740740740737
+              },
+              "scale": 26.130740740740737,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 26.828117230049784
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 18.2983695111769,
+                "mase": 0.6921502113861024,
+                "rmse": 26.64840695076436,
+                "scale": 26.4369918699187
+              },
+              "scale": 26.4369918699187,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.422170453976765,
+                "mase": 0.7347389995785931,
+                "rmse": 25.42986078698943,
+                "scale": 26.434108527131784
+              },
+              "scale": 26.434108527131784,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 16.77429315236088,
+                "mase": 0.6419371467035332,
+                "rmse": 19.669670988661032,
+                "scale": 26.130740740740737
+              },
+              "scale": 26.130740740740737,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 23.915979575471606
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 26.375000000000004,
+                "mase": 0.997655108787576,
+                "rmse": 38.785403182125116,
+                "scale": 26.4369918699187
+              },
+              "scale": 26.4369918699187,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.608333333333324,
+                "mase": 0.7417815249266858,
+                "rmse": 24.018100813067342,
+                "scale": 26.434108527131784
+              },
+              "scale": 26.434108527131784,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 18.766666666666662,
+                "mase": 0.7181834932603858,
+                "rmse": 21.826894724933563,
+                "scale": 26.130740740740737
+              },
+              "scale": 26.130740740740737,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 28.210132906708676
+        }
+      },
+      "delivery": {
+        "baseline": [
+          509.2,
+          535.6,
+          597.5,
+          604.2,
+          623.3,
+          605.0,
+          551.3,
+          521.1,
+          536.1,
+          524.5,
+          533.6,
+          495.7
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            509.2,
+            535.6,
+            597.5,
+            604.2,
+            623.3,
+            605.0,
+            551.3,
+            521.1,
+            536.1,
+            524.5,
+            533.6,
+            495.7
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.73330282047391e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_add_damped",
+        "fallback_reason": null,
+        "forecast": [
+          499.22039186558527,
+          519.075502348146,
+          558.3985954341097,
+          597.096913911695,
+          604.6015176803821,
+          594.1881938308254,
+          513.0021910349134,
+          493.76073193454073,
+          533.1361981639171,
+          517.8563717120954,
+          522.7181940574794,
+          508.6101246125648
+        ],
+        "selected": "hw_add_damped",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            499.22039186558527,
+            519.075502348146,
+            558.3985954341097,
+            597.096913911695,
+            604.6015176803821,
+            594.1881938308254,
+            513.0021910349134,
+            493.76073193454073,
+            533.1361981639171,
+            517.8563717120954,
+            522.7181940574794,
+            508.6101246125648
+          ],
+          "model": "hw_add_damped",
+          "seconds": 0.060467374976724386,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 13.308333333333318,
+          "mase": 0.5154797060641434,
+          "rmse": 18.607502966993344,
+          "scale": 25.81737588652482
+        },
+        "delivered": {
+          "mae": 15.712709458924556,
+          "mase": 0.6086098574846129,
+          "rmse": 19.3992941191832,
+          "scale": 25.81737588652482
+        },
+        "mae_direction": "higher"
+      },
+      "industry": "Hardware, building and garden supplies retailing",
+      "series_id": "A3349416V",
+      "state": "Victoria"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 151.32215097137504,
+                "mase": 3.0758567836923465,
+                "rmse": 171.89354935751277,
+                "scale": 49.19674796747968
+              },
+              "scale": 49.19674796747968,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 86.29376746078503,
+                "mase": 1.5750937045810396,
+                "rmse": 95.27006983219184,
+                "scale": 54.78643410852714
+              },
+              "scale": 54.78643410852714,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 30.693841526224514,
+                "mase": 0.4801553452308336,
+                "rmse": 34.709899165880344,
+                "scale": 63.924814814814816
+              },
+              "scale": 63.924814814814816,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 100.62450611852832
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 154.40223925458284,
+                "mase": 3.1384643423310563,
+                "rmse": 175.78501951145495,
+                "scale": 49.19674796747968
+              },
+              "scale": 49.19674796747968,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 94.95304241733804,
+                "mase": 1.7331487979167317,
+                "rmse": 104.6512413833052,
+                "scale": 54.78643410852714
+              },
+              "scale": 54.78643410852714,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 39.44564825992716,
+                "mase": 0.6170631604361798,
+                "rmse": 44.405859624133726,
+                "scale": 63.924814814814816
+              },
+              "scale": 63.924814814814816,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 108.28070683963129
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 147.5772993758859,
+                "mase": 2.9997368824752053,
+                "rmse": 167.64966752292267,
+                "scale": 49.19674796747968
+              },
+              "scale": 49.19674796747968,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 59.69582558443511,
+                "mase": 1.0896096188005757,
+                "rmse": 71.82725381677643,
+                "scale": 54.78643410852714
+              },
+              "scale": 54.78643410852714,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 17.9077590596213,
+                "mase": 0.28013783241294754,
+                "rmse": 22.553944910306445,
+                "scale": 63.924814814814816
+              },
+              "scale": 63.924814814814816,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 87.34362208333518
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 150.5427645454212,
+                "mase": 3.0600145490294164,
+                "rmse": 171.25652811998722,
+                "scale": 49.19674796747968
+              },
+              "scale": 49.19674796747968,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 69.4926660955592,
+                "mase": 1.2684283477530278,
+                "rmse": 82.20443725099486,
+                "scale": 54.78643410852714
+              },
+              "scale": 54.78643410852714,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.102984714049626,
+                "mase": 0.3301219530347224,
+                "rmse": 23.439423722809945,
+                "scale": 63.924814814814816
+              },
+              "scale": 63.924814814814816,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 92.30012969793067
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 169.37499999999997,
+                "mase": 3.442808864357482,
+                "rmse": 178.27836613939823,
+                "scale": 49.19674796747968
+              },
+              "scale": 49.19674796747968,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 260.4,
+                "mase": 4.753001436161557,
+                "rmse": 283.02738972285584,
+                "scale": 54.78643410852714
+              },
+              "scale": 54.78643410852714,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 80.02500000000003,
+                "mase": 1.2518612722121478,
+                "rmse": 86.57290280451502,
+                "scale": 63.924814814814816
+              },
+              "scale": 63.924814814814816,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 182.6262195555897
+        }
+      },
+      "delivery": {
+        "baseline": [
+          866.2,
+          911.2,
+          899.4,
+          919.4,
+          929.2,
+          1005.0,
+          915.6,
+          851.2,
+          964.1,
+          932.7,
+          939.2,
+          887.2
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            866.2,
+            911.2,
+            899.4,
+            919.4,
+            929.2,
+            1005.0,
+            915.6,
+            851.2,
+            964.1,
+            932.7,
+            939.2,
+            887.2
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.637500625103712e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          920.6712010885005,
+          935.5332987643955,
+          922.7746544716102,
+          946.8332203905818,
+          986.7941650798364,
+          1097.0447727688652,
+          974.3641968088386,
+          901.8030493765406,
+          1004.3713664436382,
+          964.8551586540435,
+          965.9340519594766,
+          916.8317407861766
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            920.6712010885005,
+            935.5332987643955,
+            922.7746544716102,
+            946.8332203905818,
+            986.7941650798364,
+            1097.0447727688652,
+            974.3641968088386,
+            901.8030493765406,
+            1004.3713664436382,
+            964.8551586540435,
+            965.9340519594766,
+            916.8317407861766
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03514562494819984,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 42.54999999999996,
+          "mase": 0.6585675082327107,
+          "rmse": 46.95774696469154,
+          "scale": 64.60992907801419
+        },
+        "delivered": {
+          "mae": 9.697585286485975,
+          "mase": 0.1500943496591133,
+          "rmse": 12.239954207841297,
+          "scale": 64.60992907801419
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Cafes, restaurants and catering services",
+      "series_id": "A3349640L",
+      "state": "Victoria"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 58.11906180255502,
+                "mase": 0.7681634834721411,
+                "rmse": 77.55667023683907,
+                "scale": 75.65975609756099
+              },
+              "scale": 75.65975609756099,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 44.62316940872362,
+                "mase": 0.5809253056539859,
+                "rmse": 52.92267250524989,
+                "scale": 76.81395348837209
+              },
+              "scale": 76.81395348837209,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 20.711890570726684,
+                "mase": 0.25802540726043827,
+                "rmse": 27.833994272364023,
+                "scale": 80.27074074074073
+              },
+              "scale": 80.27074074074073,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 52.771112338151
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 57.371879456210536,
+                "mase": 0.7582879249865836,
+                "rmse": 76.40955216240373,
+                "scale": 75.65975609756099
+              },
+              "scale": 75.65975609756099,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 30.054965790409028,
+                "mase": 0.39126961216699613,
+                "rmse": 39.90781003014507,
+                "scale": 76.81395348837209
+              },
+              "scale": 76.81395348837209,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 20.92406659440034,
+                "mase": 0.26066866209670475,
+                "rmse": 29.257927420394104,
+                "scale": 80.27074074074073
+              },
+              "scale": 80.27074074074073,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 48.525096537647634
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 55.55218486261841,
+                "mase": 0.734236901199966,
+                "rmse": 70.74826156319004,
+                "scale": 75.65975609756099
+              },
+              "scale": 75.65975609756099,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 41.781099704557015,
+                "mase": 0.5439259119878752,
+                "rmse": 52.41687949102113,
+                "scale": 76.81395348837209
+              },
+              "scale": 76.81395348837209,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 25.596939943133254,
+                "mase": 0.3188825680057758,
+                "rmse": 30.056438724563815,
+                "scale": 80.27074074074073
+              },
+              "scale": 80.27074074074073,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 51.07385992625833
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 51.22356351950449,
+                "mase": 0.6770252266403455,
+                "rmse": 65.26704495491825,
+                "scale": 75.65975609756099
+              },
+              "scale": 75.65975609756099,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 26.41158606097728,
+                "mase": 0.34383838953134216,
+                "rmse": 36.25221805098296,
+                "scale": 76.81395348837209
+              },
+              "scale": 76.81395348837209,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 28.66199037146551,
+                "mase": 0.35706647412210013,
+                "rmse": 32.90910717873313,
+                "scale": 80.27074074074073
+              },
+              "scale": 80.27074074074073,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 44.809456728211444
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 100.47499999999995,
+                "mase": 1.3279847197820787,
+                "rmse": 120.01107934964448,
+                "scale": 75.65975609756099
+              },
+              "scale": 75.65975609756099,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 154.5916666666667,
+                "mase": 2.0125466747401357,
+                "rmse": 160.7363343076688,
+                "scale": 76.81395348837209
+              },
+              "scale": 76.81395348837209,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 81.58333333333337,
+                "mase": 1.016352067770647,
+                "rmse": 87.4465074583695,
+                "scale": 80.27074074074073
+              },
+              "scale": 80.27074074074073,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 122.73130703856093
+        }
+      },
+      "delivery": {
+        "baseline": [
+          2533.7,
+          2509.9,
+          2450.8,
+          2563.5,
+          2514.9,
+          2801.9,
+          2586.4,
+          2414.0,
+          2630.8,
+          2455.8,
+          2547.4,
+          2476.1
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            2533.7,
+            2509.9,
+            2450.8,
+            2563.5,
+            2514.9,
+            2801.9,
+            2586.4,
+            2414.0,
+            2630.8,
+            2455.8,
+            2547.4,
+            2476.1
+          ],
+          "model": "seasonal_naive",
+          "seconds": 0.0001184159773401916,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul_damped",
+        "fallback_reason": null,
+        "forecast": [
+          2629.4932454132713,
+          2631.972774604504,
+          2550.5080215714656,
+          2668.4644495009143,
+          2611.05204065737,
+          2876.2819217118017,
+          2690.501049978086,
+          2451.05638242214,
+          2721.076209792064,
+          2588.2783378944273,
+          2641.230274414613,
+          2552.424241298556
+        ],
+        "selected": "hw_mul_damped",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            2629.4932454132713,
+            2631.972774604504,
+            2550.5080215714656,
+            2668.4644495009143,
+            2611.05204065737,
+            2876.2819217118017,
+            2690.501049978086,
+            2451.05638242214,
+            2721.076209792064,
+            2588.2783378944273,
+            2641.230274414613,
+            2552.424241298556
+          ],
+          "model": "hw_mul_damped",
+          "seconds": 0.03181233303621411,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 83.80833333333328,
+          "mase": 1.0433447671518306,
+          "rmse": 90.36283804750703,
+          "scale": 80.32659574468086
+        },
+        "delivered": {
+          "mae": 15.64759932801197,
+          "mase": 0.19479973205572,
+          "rmse": 20.170713609615348,
+          "scale": 80.32659574468086
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Supermarket and grocery stores",
+      "series_id": "A3349882C",
+      "state": "Queensland"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 32.33441174399966,
+                "mase": 1.6627851430950766,
+                "rmse": 41.79400363316437,
+                "scale": 19.44593495934959
+              },
+              "scale": 19.44593495934959,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 16.782622604078586,
+                "mase": 0.8392937840380452,
+                "rmse": 20.814497020770617,
+                "scale": 19.996124031007753
+              },
+              "scale": 19.996124031007753,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 8.966126773773686,
+                "mase": 0.42356689451637597,
+                "rmse": 12.468900224979215,
+                "scale": 21.16814814814815
+              },
+              "scale": 21.16814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 25.0258002929714
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 34.79855529323536,
+                "mase": 1.7895028120776597,
+                "rmse": 43.904707093060935,
+                "scale": 19.44593495934959
+              },
+              "scale": 19.44593495934959,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 17.123314410885328,
+                "mase": 0.8563316762954865,
+                "rmse": 20.913184486646237,
+                "scale": 19.996124031007753
+              },
+              "scale": 19.996124031007753,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 9.49209226483488,
+                "mase": 0.4484139187992823,
+                "rmse": 12.334314883388759,
+                "scale": 21.16814814814815
+              },
+              "scale": 21.16814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 25.717402154365313
+        },
+        "hw_mul": {
+          "eligible": false,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 31.607856952460036,
+                "mase": 1.625422332149836,
+                "rmse": 38.065847426783336,
+                "scale": 19.44593495934959
+              },
+              "scale": 19.44593495934959,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "error": "ValueError: Optimizer did not converge",
+              "scale": 19.996124031007753,
+              "status": "failed",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": [
+                "Optimization failed to converge. Check mle_retvals."
+              ]
+            },
+            {
+              "metrics": {
+                "mae": 13.723417423323829,
+                "mase": 0.6483050537665664,
+                "rmse": 16.508964638322226,
+                "scale": 21.16814814814815
+              },
+              "scale": 21.16814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": null
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 33.66882942169499,
+                "mase": 1.7314070777299932,
+                "rmse": 41.56105509678982,
+                "scale": 19.44593495934959
+              },
+              "scale": 19.44593495934959,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 13.257438164968056,
+                "mase": 0.6630003966973751,
+                "rmse": 17.96478978105051,
+                "scale": 19.996124031007753
+              },
+              "scale": 19.996124031007753,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 12.23647039815043,
+                "mase": 0.5780605045142275,
+                "rmse": 14.707090658970053,
+                "scale": 21.16814814814815
+              },
+              "scale": 21.16814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 24.74431184560346
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 31.274999999999995,
+                "mase": 1.6083052867027616,
+                "rmse": 36.01519355309182,
+                "scale": 19.44593495934959
+              },
+              "scale": 19.44593495934959,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 46.366666666666674,
+                "mase": 2.3187827098274862,
+                "rmse": 58.056265811710624,
+                "scale": 19.996124031007753
+              },
+              "scale": 19.996124031007753,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.850000000000003,
+                "mase": 0.7015257024880149,
+                "rmse": 16.71830334294323,
+                "scale": 21.16814814814815
+              },
+              "scale": 21.16814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 36.92992090258189
+        }
+      },
+      "delivery": {
+        "baseline": [
+          352.7,
+          332.6,
+          351.4,
+          347.4,
+          426.3,
+          525.4,
+          336.6,
+          278.7,
+          314.9,
+          322.1,
+          347.8,
+          363.1
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            352.7,
+            332.6,
+            351.4,
+            347.4,
+            426.3,
+            525.4,
+            336.6,
+            278.7,
+            314.9,
+            322.1,
+            347.8,
+            363.1
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.458300726488233e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul_damped",
+        "fallback_reason": null,
+        "forecast": [
+          364.2309347550607,
+          342.4201487766451,
+          376.0830827309605,
+          378.56917315124423,
+          419.1393841528636,
+          551.2075353201348,
+          343.6350710227942,
+          276.16038889023395,
+          310.63710035069204,
+          313.9182434573504,
+          355.64074283161875,
+          368.86175714257234
+        ],
+        "selected": "hw_mul_damped",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            364.2309347550607,
+            342.4201487766451,
+            376.0830827309605,
+            378.56917315124423,
+            419.1393841528636,
+            551.2075353201348,
+            343.6350710227942,
+            276.16038889023395,
+            310.63710035069204,
+            313.9182434573504,
+            355.64074283161875,
+            368.86175714257234
+          ],
+          "model": "hw_mul_damped",
+          "seconds": 0.03236249997280538,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 18.008333333333336,
+          "mase": 0.8616719831681825,
+          "rmse": 20.701791387864642,
+          "scale": 20.899290780141847
+        },
+        "delivered": {
+          "mae": 17.313568224363365,
+          "mase": 0.828428505373705,
+          "rmse": 18.95556614138138,
+          "scale": 20.899290780141847
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Clothing retailing",
+      "series_id": "A3349477X",
+      "state": "Queensland"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 32.644203391972205,
+                "mase": 1.4814732749926507,
+                "rmse": 36.73056222664484,
+                "scale": 22.034959349593496
+              },
+              "scale": 22.034959349593496,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.96339483007853,
+                "mase": 0.9875833710063545,
+                "rmse": 27.526355496872682,
+                "scale": 22.239534883720932
+              },
+              "scale": 22.239534883720932,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 7.826093910550829,
+                "mase": 0.35367143504983156,
+                "rmse": 10.933249332141065,
+                "scale": 22.12814814814815
+              },
+              "scale": 22.12814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 25.063389018552858
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 37.54546697624121,
+                "mase": 1.7039045264648447,
+                "rmse": 41.162556034565405,
+                "scale": 22.034959349593496
+              },
+              "scale": 22.034959349593496,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 18.638355769461025,
+                "mase": 0.8380730922166936,
+                "rmse": 22.44612900097263,
+                "scale": 22.239534883720932
+              },
+              "scale": 22.239534883720932,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 11.41383598246584,
+                "mase": 0.5158061987858228,
+                "rmse": 13.582084233911083,
+                "scale": 22.12814814814815
+              },
+              "scale": 22.12814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 25.7302564231497
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 24.952973942345043,
+                "mase": 1.132426592963303,
+                "rmse": 28.498146717856436,
+                "scale": 22.034959349593496
+              },
+              "scale": 22.034959349593496,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 35.14887687234422,
+                "mase": 1.5804681642902867,
+                "rmse": 37.040155135948325,
+                "scale": 22.239534883720932
+              },
+              "scale": 22.239534883720932,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 5.9965607167247255,
+                "mase": 0.2709924335546607,
+                "rmse": 8.263525478133367,
+                "scale": 22.12814814814815
+              },
+              "scale": 22.12814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 24.600609110646047
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 29.317878653911432,
+                "mase": 1.3305165754459307,
+                "rmse": 32.83967530723554,
+                "scale": 22.034959349593496
+              },
+              "scale": 22.034959349593496,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 29.77987760675116,
+                "mase": 1.3390512779361077,
+                "rmse": 31.257187511336245,
+                "scale": 22.239534883720932
+              },
+              "scale": 22.239534883720932,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 7.370757942378944,
+                "mase": 0.33309420621335567,
+                "rmse": 8.918422670331042,
+                "scale": 22.12814814814815
+              },
+              "scale": 22.12814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 24.33842849630094
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 26.433333333333334,
+                "mase": 1.199608899383832,
+                "rmse": 31.44216913636844,
+                "scale": 22.034959349593496
+              },
+              "scale": 22.034959349593496,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 19.73333333333333,
+                "mase": 0.8873087245982779,
+                "rmse": 22.027520665446367,
+                "scale": 22.239534883720932
+              },
+              "scale": 22.239534883720932,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 12.491666666666665,
+                "mase": 0.5645147792320824,
+                "rmse": 14.423736224247405,
+                "scale": 22.12814814814815
+              },
+              "scale": 22.12814814814815,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 22.631142008687405
+        }
+      },
+      "delivery": {
+        "baseline": [
+          431.8,
+          454.0,
+          463.8,
+          481.8,
+          470.3,
+          491.0,
+          436.2,
+          412.0,
+          423.9,
+          426.8,
+          431.3,
+          434.6
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            431.8,
+            454.0,
+            463.8,
+            481.8,
+            470.3,
+            491.0,
+            436.2,
+            412.0,
+            423.9,
+            426.8,
+            431.3,
+            434.6
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.858297951519489e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "seasonal_naive",
+        "fallback_reason": null,
+        "forecast": [
+          431.8,
+          454.0,
+          463.8,
+          481.8,
+          470.3,
+          491.0,
+          436.2,
+          412.0,
+          423.9,
+          426.8,
+          431.3,
+          434.6
+        ],
+        "selected": "seasonal_naive",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            431.8,
+            454.0,
+            463.8,
+            481.8,
+            470.3,
+            491.0,
+            436.2,
+            412.0,
+            423.9,
+            426.8,
+            431.3,
+            434.6
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.858297951519489e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 24.58333333333333,
+          "mase": 1.1319291370724138,
+          "rmse": 26.172600176520476,
+          "scale": 21.71808510638298
+        },
+        "delivered": {
+          "mae": 24.58333333333333,
+          "mase": 1.1319291370724138,
+          "rmse": 26.172600176520476,
+          "scale": 21.71808510638298
+        },
+        "mae_direction": "equal"
+      },
+      "industry": "Hardware, building and garden supplies retailing",
+      "series_id": "A3349479C",
+      "state": "Queensland"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 84.33365069681264,
+                "mase": 2.573859294494734,
+                "rmse": 98.37055503817922,
+                "scale": 32.76544715447155
+              },
+              "scale": 32.76544715447155,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 42.306075809004746,
+                "mase": 1.2097497986947325,
+                "rmse": 45.10126924182294,
+                "scale": 34.97093023255814
+              },
+              "scale": 34.97093023255814,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 36.99166460516548,
+                "mase": 0.9605082939100901,
+                "rmse": 42.18167024297598,
+                "scale": 38.51259259259259
+              },
+              "scale": 38.51259259259259,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 61.88449817432604
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 90.86972787620111,
+                "mase": 2.7733400813301574,
+                "rmse": 106.09728507878687,
+                "scale": 32.76544715447155
+              },
+              "scale": 32.76544715447155,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 50.68853240500971,
+                "mase": 1.4494476431690224,
+                "rmse": 53.55233601690026,
+                "scale": 34.97093023255814
+              },
+              "scale": 34.97093023255814,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 42.37792147914374,
+                "mase": 1.1003653253739816,
+                "rmse": 48.145451002148945,
+                "scale": 38.51259259259259
+              },
+              "scale": 38.51259259259259,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 69.26502403261203
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 79.3556417786733,
+                "mase": 2.421930682177292,
+                "rmse": 93.53213845953078,
+                "scale": 32.76544715447155
+              },
+              "scale": 32.76544715447155,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 22.673580094048152,
+                "mase": 0.6483550750085257,
+                "rmse": 28.213139876407862,
+                "scale": 34.97093023255814
+              },
+              "scale": 34.97093023255814,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 17.440630862587483,
+                "mase": 0.452855278975479,
+                "rmse": 21.834015726178404,
+                "scale": 38.51259259259259
+              },
+              "scale": 38.51259259259259,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 47.85976468737235
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 82.80188980429224,
+                "mase": 2.5271100197084335,
+                "rmse": 97.51199085627566,
+                "scale": 32.76544715447155
+              },
+              "scale": 32.76544715447155,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 28.13350404767807,
+                "mase": 0.8044825762594561,
+                "rmse": 33.50541638600449,
+                "scale": 34.97093023255814
+              },
+              "scale": 34.97093023255814,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 20.020533833273817,
+                "mase": 0.5198438351077023,
+                "rmse": 24.012868134861773,
+                "scale": 38.51259259259259
+              },
+              "scale": 38.51259259259259,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 51.676758459047306
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 80.18333333333332,
+                "mase": 2.447191791868788,
+                "rmse": 89.90672017893509,
+                "scale": 32.76544715447155
+              },
+              "scale": 32.76544715447155,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 114.65833333333335,
+                "mase": 3.2786755333887507,
+                "rmse": 128.74341730744916,
+                "scale": 34.97093023255814
+              },
+              "scale": 34.97093023255814,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 45.67500000000002,
+                "mase": 1.185975727034929,
+                "rmse": 51.345650578538155,
+                "scale": 38.51259259259259
+              },
+              "scale": 38.51259259259259,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 89.99859602164081
+        }
+      },
+      "delivery": {
+        "baseline": [
+          686.5,
+          691.7,
+          703.5,
+          696.4,
+          653.7,
+          748.9,
+          655.1,
+          575.6,
+          640.1,
+          657.1,
+          643.2,
+          592.6
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            686.5,
+            691.7,
+            703.5,
+            696.4,
+            653.7,
+            748.9,
+            655.1,
+            575.6,
+            640.1,
+            657.1,
+            643.2,
+            592.6
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.479197276756167e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          654.2630045078074,
+          650.5850418016012,
+          656.4906011017857,
+          675.6814459736437,
+          654.2264433207424,
+          729.0428011095032,
+          638.859398443492,
+          572.4944581583666,
+          630.6542604642266,
+          623.0865046711668,
+          636.8949597253659,
+          610.6659404936165
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            654.2630045078074,
+            650.5850418016012,
+            656.4906011017857,
+            675.6814459736437,
+            654.2264433207424,
+            729.0428011095032,
+            638.859398443492,
+            572.4944581583666,
+            630.6542604642266,
+            623.0865046711668,
+            636.8949597253659,
+            610.6659404936165
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03415158297866583,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 18.866666666666674,
+          "mase": 0.486036632713653,
+          "rmse": 25.984386337439894,
+          "scale": 38.81737588652482
+        },
+        "delivered": {
+          "mae": 23.097505056675647,
+          "mase": 0.59503004850706,
+          "rmse": 29.441961770711373,
+          "scale": 38.81737588652482
+        },
+        "mae_direction": "higher"
+      },
+      "industry": "Cafes, restaurants and catering services",
+      "series_id": "A3349481R",
+      "state": "Queensland"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 28.878201100794854,
+                "mase": 0.7678297327953149,
+                "rmse": 35.04213004404159,
+                "scale": 37.61016260162602
+              },
+              "scale": 37.61016260162602,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 30.15666906788228,
+                "mase": 0.8095160458125549,
+                "rmse": 34.866530318909135,
+                "scale": 37.25271317829458
+              },
+              "scale": 37.25271317829458,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 15.258371644284656,
+                "mase": 0.3912291524417022,
+                "rmse": 18.680329187020504,
+                "scale": 39.001111111111115
+              },
+              "scale": 39.001111111111115,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 29.529663183323745
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 29.87902135692976,
+                "mase": 0.7944401004966136,
+                "rmse": 37.03263833360778,
+                "scale": 37.61016260162602
+              },
+              "scale": 37.61016260162602,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 31.80859518184741,
+                "mase": 0.8538598257154809,
+                "rmse": 36.45469728881206,
+                "scale": 37.25271317829458
+              },
+              "scale": 37.25271317829458,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 13.031987266092756,
+                "mase": 0.33414399987132787,
+                "rmse": 17.521110612578216,
+                "scale": 39.001111111111115
+              },
+              "scale": 39.001111111111115,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 30.33614874499935
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 25.288959828976164,
+                "mase": 0.672396982082785,
+                "rmse": 31.60661676469639,
+                "scale": 37.61016260162602
+              },
+              "scale": 37.61016260162602,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 28.197759735287587,
+                "mase": 0.7569317058956423,
+                "rmse": 32.305690579297135,
+                "scale": 37.25271317829458
+              },
+              "scale": 37.25271317829458,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 13.004988924664815,
+                "mase": 0.33345175442860125,
+                "rmse": 16.105371641555397,
+                "scale": 39.001111111111115
+              },
+              "scale": 39.001111111111115,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 26.672559661849643
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 25.988522948101416,
+                "mase": 0.6909973568414681,
+                "rmse": 33.20470916960424,
+                "scale": 37.61016260162602
+              },
+              "scale": 37.61016260162602,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 29.255212409247935,
+                "mase": 0.7853176295973413,
+                "rmse": 33.38617912787214,
+                "scale": 37.25271317829458
+              },
+              "scale": 37.25271317829458,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 12.3305530426357,
+                "mase": 0.31615901935477986,
+                "rmse": 15.325898954136864,
+                "scale": 39.001111111111115
+              },
+              "scale": 39.001111111111115,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 27.305595750537748
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 29.92500000000001,
+                "mase": 0.7956626063272124,
+                "rmse": 38.9382095976005,
+                "scale": 37.61016260162602
+              },
+              "scale": 37.61016260162602,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 76.59166666666668,
+                "mase": 2.056002372232396,
+                "rmse": 80.93645140890888,
+                "scale": 37.25271317829458
+              },
+              "scale": 37.25271317829458,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 51.691666666666606,
+                "mase": 1.3253895900401682,
+                "rmse": 55.44664853111797,
+                "scale": 39.001111111111115
+              },
+              "scale": 39.001111111111115,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 58.44043651254245
+        }
+      },
+      "delivery": {
+        "baseline": [
+          1251.1,
+          1250.3,
+          1241.6,
+          1291.8,
+          1286.6,
+          1424.2,
+          1269.8,
+          1223.6,
+          1328.0,
+          1240.0,
+          1302.2,
+          1242.5
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            1251.1,
+            1250.3,
+            1241.6,
+            1291.8,
+            1286.6,
+            1424.2,
+            1269.8,
+            1223.6,
+            1328.0,
+            1240.0,
+            1302.2,
+            1242.5
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.287497960031033e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          1286.4691370544629,
+          1301.5787991330035,
+          1275.479464333059,
+          1333.1833940990566,
+          1322.7754513613093,
+          1478.316968534721,
+          1330.8504234512684,
+          1230.9011422244891,
+          1373.866767645978,
+          1300.9797043918923,
+          1329.6782291522047,
+          1273.8538346654898
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            1286.4691370544629,
+            1301.5787991330035,
+            1275.479464333059,
+            1333.1833940990566,
+            1322.7754513613093,
+            1478.316968534721,
+            1330.8504234512684,
+            1230.9011422244891,
+            1373.866767645978,
+            1300.9797043918923,
+            1329.6782291522047,
+            1273.8538346654898
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03687066602287814,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 53.58333333333337,
+          "mase": 1.3551288719889523,
+          "rmse": 56.332095647153075,
+          "scale": 39.54113475177305
+        },
+        "delivered": {
+          "mae": 13.963332901139703,
+          "mase": 0.35313434955261563,
+          "rmse": 17.947228493243074,
+          "scale": 39.54113475177305
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Supermarket and grocery stores",
+      "series_id": "A3349744F",
+      "state": "Western Australia"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 20.225624311168357,
+                "mase": 2.4718086246447495,
+                "rmse": 22.270175464718097,
+                "scale": 8.182520325203251
+              },
+              "scale": 8.182520325203251,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.17477639793973,
+                "mase": 0.7162862778959805,
+                "rmse": 8.268318962342725,
+                "scale": 8.620542635658914
+              },
+              "scale": 8.620542635658914,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 5.395869629982244,
+                "mase": 0.6328503540659424,
+                "rmse": 7.369951887256901,
+                "scale": 8.526296296296296
+              },
+              "scale": 8.526296296296296,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 12.63614877143924
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 21.446307515687945,
+                "mase": 2.620990436116665,
+                "rmse": 23.47554214096773,
+                "scale": 8.182520325203251
+              },
+              "scale": 8.182520325203251,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 7.620812098606485,
+                "mase": 0.8840292799066918,
+                "rmse": 9.62687886802573,
+                "scale": 8.620542635658914
+              },
+              "scale": 8.620542635658914,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.1288198640730664,
+                "mase": 0.7188138496588888,
+                "rmse": 8.391763578567183,
+                "scale": 8.526296296296296
+              },
+              "scale": 8.526296296296296,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 13.831394862520213
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 11.764480879490463,
+                "mase": 1.4377576115826192,
+                "rmse": 13.507011428829943,
+                "scale": 8.182520325203251
+              },
+              "scale": 8.182520325203251,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 3.8848898777406604,
+                "mase": 0.450654911405553,
+                "rmse": 4.540480472614543,
+                "scale": 8.620542635658914
+              },
+              "scale": 8.620542635658914,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 5.12175494053506,
+                "mase": 0.60070102686437,
+                "rmse": 6.353012345589445,
+                "scale": 8.526296296296296
+              },
+              "scale": 8.526296296296296,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 8.133501415677976
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 13.325351913478295,
+                "mase": 1.6285143676862541,
+                "rmse": 15.121049041763902,
+                "scale": 8.182520325203251
+              },
+              "scale": 8.182520325203251,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 3.8353840510564097,
+                "mase": 0.44491213757140136,
+                "rmse": 4.527472662310008,
+                "scale": 8.620542635658914
+              },
+              "scale": 8.620542635658914,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 4.130152743573998,
+                "mase": 0.48440173787627794,
+                "rmse": 5.657235209967003,
+                "scale": 8.526296296296296
+              },
+              "scale": 8.526296296296296,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 8.435252304680304
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 17.599999999999998,
+                "mase": 2.1509265239207114,
+                "rmse": 18.87127446676562,
+                "scale": 8.182520325203251
+              },
+              "scale": 8.182520325203251,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.499999999999997,
+                "mase": 0.7540128591340315,
+                "rmse": 8.586908640482907,
+                "scale": 8.620542635658914
+              },
+              "scale": 8.620542635658914,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.166666666666668,
+                "mase": 0.7232526823335217,
+                "rmse": 7.791341347932334,
+                "scale": 8.526296296296296
+              },
+              "scale": 8.526296296296296,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 11.749841485060287
+        }
+      },
+      "delivery": {
+        "baseline": [
+          131.1,
+          122.9,
+          128.8,
+          138.8,
+          163.8,
+          207.2,
+          125.1,
+          110.1,
+          122.1,
+          123.2,
+          134.2,
+          140.0
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            131.1,
+            122.9,
+            128.8,
+            138.8,
+            163.8,
+            207.2,
+            125.1,
+            110.1,
+            122.1,
+            123.2,
+            134.2,
+            140.0
+          ],
+          "model": "seasonal_naive",
+          "seconds": 9.895901894196868e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          135.3604910229336,
+          127.2696542294159,
+          129.93437536011015,
+          141.8722389618064,
+          152.31967182261397,
+          213.64915139851644,
+          127.97899769868465,
+          107.7492662809313,
+          124.67656264951191,
+          133.16630169037364,
+          143.77282952564948,
+          142.16026380561536
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            135.3604910229336,
+            127.2696542294159,
+            129.93437536011015,
+            141.8722389618064,
+            152.31967182261397,
+            213.64915139851644,
+            127.97899769868465,
+            107.7492662809313,
+            124.67656264951191,
+            133.16630169037364,
+            143.77282952564948,
+            142.16026380561536
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03449012496275827,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 4.558333333333334,
+          "mase": 0.5409915407600692,
+          "rmse": 5.638483838763755,
+          "scale": 8.425886524822694
+        },
+        "delivered": {
+          "mae": 2.8207869485116994,
+          "mase": 0.3347762802408566,
+          "rmse": 3.6790966257704563,
+          "scale": 8.425886524822694
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Clothing retailing",
+      "series_id": "A3349507A",
+      "state": "Western Australia"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 15.608530426273505,
+                "mase": 1.1490254914753815,
+                "rmse": 16.93081727112078,
+                "scale": 13.584146341463414
+              },
+              "scale": 13.584146341463414,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 12.874789732875563,
+                "mase": 0.934767342361586,
+                "rmse": 15.426187937805675,
+                "scale": 13.773255813953487
+              },
+              "scale": 13.773255813953487,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.759911639137966,
+                "mase": 1.0738820109316225,
+                "rmse": 15.987618919476471,
+                "scale": 13.744444444444444
+              },
+              "scale": 13.744444444444444,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 16.114874709467642
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 17.190079253484747,
+                "mase": 1.265451565477825,
+                "rmse": 18.44068314847385,
+                "scale": 13.584146341463414
+              },
+              "scale": 13.584146341463414,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.729171859249725,
+                "mase": 1.069403782098334,
+                "rmse": 16.714172892198054,
+                "scale": 13.773255813953487
+              },
+              "scale": 13.773255813953487,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 16.689041644778126,
+                "mase": 1.2142390849070586,
+                "rmse": 17.71662557589317,
+                "scale": 13.744444444444444
+              },
+              "scale": 13.744444444444444,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 17.62382720552169
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 12.392666880801515,
+                "mase": 0.9122889704872289,
+                "rmse": 12.873612365913294,
+                "scale": 13.584146341463414
+              },
+              "scale": 13.584146341463414,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 8.544097629213033,
+                "mase": 0.6203397181193084,
+                "rmse": 10.012909154725474,
+                "scale": 13.773255813953487
+              },
+              "scale": 13.773255813953487,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 9.125784597640845,
+                "mase": 0.6639616926335296,
+                "rmse": 10.332732935644774,
+                "scale": 13.744444444444444
+              },
+              "scale": 13.744444444444444,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 11.07308481876118
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 14.486529928740131,
+                "mase": 1.0664291715205052,
+                "rmse": 14.982024931261945,
+                "scale": 13.584146341463414
+              },
+              "scale": 13.584146341463414,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 10.025351696961069,
+                "mase": 0.7278853912525556,
+                "rmse": 11.245397007279664,
+                "scale": 13.773255813953487
+              },
+              "scale": 13.773255813953487,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 10.656734528792981,
+                "mase": 0.7753485105831596,
+                "rmse": 11.94214241215487,
+                "scale": 13.744444444444444
+              },
+              "scale": 13.744444444444444,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 12.723188116898827
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 17.65,
+                "mase": 1.2993087350749617,
+                "rmse": 19.197395656703016,
+                "scale": 13.584146341463414
+              },
+              "scale": 13.584146341463414,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 13.125000000000002,
+                "mase": 0.9529337273111019,
+                "rmse": 14.51823565956507,
+                "scale": 13.773255813953487
+              },
+              "scale": 13.773255813953487,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 9.199999999999998,
+                "mase": 0.6693613581244946,
+                "rmse": 10.843584893075413,
+                "scale": 13.744444444444444
+              },
+              "scale": 13.744444444444444,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 14.853072069781168
+        }
+      },
+      "delivery": {
+        "baseline": [
+          211.1,
+          232.7,
+          247.5,
+          271.7,
+          263.3,
+          270.4,
+          236.8,
+          215.7,
+          228.5,
+          228.4,
+          230.7,
+          222.4
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            211.1,
+            232.7,
+            247.5,
+            271.7,
+            263.3,
+            270.4,
+            236.8,
+            215.7,
+            228.5,
+            228.4,
+            230.7,
+            222.4
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.358299965038896e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          224.5990070905661,
+          237.39509744264413,
+          254.69880501435105,
+          282.07179478212333,
+          279.0071961345043,
+          294.9793048655728,
+          251.95293524097494,
+          224.8201235157973,
+          245.15980948695417,
+          238.63112649449434,
+          237.3467372902249,
+          226.08328387301043
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            224.5990070905661,
+            237.39509744264413,
+            254.69880501435105,
+            282.07179478212333,
+            279.0071961345043,
+            294.9793048655728,
+            251.95293524097494,
+            224.8201235157973,
+            245.15980948695417,
+            238.63112649449434,
+            237.3467372902249,
+            226.08328387301043
+          ],
+          "model": "hw_mul",
+          "seconds": 0.030109915998764336,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 14.475,
+          "mase": 1.0681818181818183,
+          "rmse": 15.463155132981969,
+          "scale": 13.551063829787232
+        },
+        "delivered": {
+          "mae": 6.200622337358176,
+          "mase": 0.45757457977050453,
+          "rmse": 7.318439839763667,
+          "scale": 13.551063829787232
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Hardware, building and garden supplies retailing",
+      "series_id": "A3349909T",
+      "state": "Western Australia"
+    },
+    {
+      "backtest": {
+        "hw_add": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 48.704079436880704,
+                "mase": 2.4992602143291798,
+                "rmse": 51.85989792862676,
+                "scale": 19.487398373983737
+              },
+              "scale": 19.487398373983737,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.343696624447542,
+                "mase": 1.012721605353097,
+                "rmse": 23.768058976995263,
+                "scale": 21.07558139534884
+              },
+              "scale": 21.07558139534884,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 3.7119487010660825,
+                "mase": 0.1674703232162824,
+                "rmse": 4.702767884206866,
+                "scale": 22.164814814814818
+              },
+              "scale": 22.164814814814818,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 26.776908263276297
+        },
+        "hw_add_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 52.051692323646556,
+                "mase": 2.671043682933948,
+                "rmse": 55.33735513019147,
+                "scale": 19.487398373983737
+              },
+              "scale": 19.487398373983737,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 28.821067931578607,
+                "mase": 1.367509981856971,
+                "rmse": 30.22856988778577,
+                "scale": 21.07558139534884
+              },
+              "scale": 21.07558139534884,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.0197943571426435,
+                "mase": 0.27159235966722595,
+                "rmse": 7.250079195376804,
+                "scale": 22.164814814814818
+              },
+              "scale": 22.164814814814818,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 30.938668071118013
+        },
+        "hw_mul": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 41.436299585259995,
+                "mase": 2.1263125426007967,
+                "rmse": 43.53299358429428,
+                "scale": 19.487398373983737
+              },
+              "scale": 19.487398373983737,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 14.187343709190975,
+                "mase": 0.673164998063682,
+                "rmse": 16.082851815696586,
+                "scale": 21.07558139534884
+              },
+              "scale": 21.07558139534884,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 10.388471336322553,
+                "mase": 0.4686919977954865,
+                "rmse": 12.774196606597565,
+                "scale": 22.164814814814818
+              },
+              "scale": 22.164814814814818,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 24.130014002196145
+        },
+        "hw_mul_damped": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 47.48729032213163,
+                "mase": 2.436820421628399,
+                "rmse": 50.03950799279636,
+                "scale": 19.487398373983737
+              },
+              "scale": 19.487398373983737,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 21.711822802690715,
+                "mase": 1.0301885578104282,
+                "rmse": 23.26453968661786,
+                "scale": 21.07558139534884
+              },
+              "scale": 21.07558139534884,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 9.601975149348021,
+                "mase": 0.4332080023935108,
+                "rmse": 10.341723070763052,
+                "scale": 22.164814814814818
+              },
+              "scale": 22.164814814814818,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 27.881923583392425
+        },
+        "seasonal_naive": {
+          "eligible": true,
+          "folds": [
+            {
+              "metrics": {
+                "mae": 53.63333333333335,
+                "mase": 2.7522059283673013,
+                "rmse": 56.7921649525707,
+                "scale": 19.487398373983737
+              },
+              "scale": 19.487398373983737,
+              "status": "ok",
+              "train_end": "2021-06-01",
+              "train_n": 258,
+              "validation_end": "2022-06-01",
+              "validation_start": "2021-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 45.583333333333336,
+                "mase": 2.1628505747126434,
+                "rmse": 47.98683847334252,
+                "scale": 21.07558139534884
+              },
+              "scale": 21.07558139534884,
+              "status": "ok",
+              "train_end": "2022-06-01",
+              "train_n": 270,
+              "validation_end": "2023-06-01",
+              "validation_start": "2022-07-01",
+              "warnings": []
+            },
+            {
+              "metrics": {
+                "mae": 6.5250000000000155,
+                "mase": 0.2943854958643168,
+                "rmse": 8.005570976930182,
+                "scale": 22.164814814814818
+              },
+              "scale": 22.164814814814818,
+              "status": "ok",
+              "train_end": "2023-06-01",
+              "train_n": 282,
+              "validation_end": "2024-06-01",
+              "validation_start": "2023-07-01",
+              "warnings": []
+            }
+          ],
+          "mean_rmse": 37.59485813428114
+        }
+      },
+      "delivery": {
+        "baseline": [
+          413.8,
+          417.8,
+          413.4,
+          427.9,
+          427.9,
+          430.2,
+          400.9,
+          388.3,
+          409.2,
+          405.7,
+          419.0,
+          409.3
+        ],
+        "baseline_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            413.8,
+            417.8,
+            413.4,
+            427.9,
+            427.9,
+            430.2,
+            400.9,
+            388.3,
+            409.2,
+            405.7,
+            419.0,
+            409.3
+          ],
+          "model": "seasonal_naive",
+          "seconds": 8.441699901595712e-05,
+          "status": "ok",
+          "warnings": []
+        },
+        "dates": [
+          "2024-07-01",
+          "2024-08-01",
+          "2024-09-01",
+          "2024-10-01",
+          "2024-11-01",
+          "2024-12-01",
+          "2025-01-01",
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01"
+        ],
+        "delivered": "hw_mul",
+        "fallback_reason": null,
+        "forecast": [
+          434.1408702163111,
+          441.0957829073588,
+          435.95712194037566,
+          451.7444613345946,
+          447.66662795427965,
+          464.34120224544955,
+          411.49566110578905,
+          398.0305403401856,
+          433.6764421246781,
+          414.79218288617085,
+          436.1009487804895,
+          423.6910060187396
+        ],
+        "selected": "hw_mul",
+        "selected_attempt": {
+          "dates": [
+            "2024-07-01",
+            "2024-08-01",
+            "2024-09-01",
+            "2024-10-01",
+            "2024-11-01",
+            "2024-12-01",
+            "2025-01-01",
+            "2025-02-01",
+            "2025-03-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-06-01"
+          ],
+          "forecast": [
+            434.1408702163111,
+            441.0957829073588,
+            435.95712194037566,
+            451.7444613345946,
+            447.66662795427965,
+            464.34120224544955,
+            411.49566110578905,
+            398.0305403401856,
+            433.6764421246781,
+            414.79218288617085,
+            436.1009487804895,
+            423.6910060187396
+          ],
+          "model": "hw_mul",
+          "seconds": 0.03518187499139458,
+          "status": "ok",
+          "warnings": []
+        },
+        "status": "ok"
+      },
+      "evaluation": {
+        "baseline": {
+          "mae": 20.116666666666678,
+          "mase": 0.9356897802995319,
+          "rmse": 22.235294766054572,
+          "scale": 21.49929078014185
+        },
+        "delivered": {
+          "mae": 10.129940445193062,
+          "mase": 0.47117556336089644,
+          "rmse": 12.352555989346559,
+          "scale": 21.49929078014185
+        },
+        "mae_direction": "lower"
+      },
+      "industry": "Cafes, restaurants and catering services",
+      "series_id": "A3349910A",
+      "state": "Western Australia"
+    }
+  ],
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scipy": "1.15.3",
+    "statsmodels": "0.14.6"
+  }
+}
